@@ -1,0 +1,35 @@
+{
+  "id": "theme_tv60",
+  "name": "Best-of TV années 60",
+  "description": "Ambiance vintage, noir et blanc, rétro TV",
+  "colors": {
+    "bg": "#1a1a1a",
+    "bgGradientFrom": "#2d2d2d",
+    "bgGradientTo": "#111111",
+    "primary": "#f5d020",
+    "secondary": "#e8e8e8",
+    "accent": "#ff6b35",
+    "text": "#f0f0f0",
+    "textMuted": "rgba(240,240,240,0.5)",
+    "cardBg": "rgba(245,208,32,0.08)",
+    "cardBorder": "rgba(245,208,32,0.3)",
+    "timerNormal": "#f5d020",
+    "timerWarning": "#ff6b35",
+    "timerUrgent": "#ff2020"
+  },
+  "fonts": {
+    "display": "Lilita One",
+    "body": "Nunito"
+  },
+  "backgroundImage": null,
+  "overlayImage": null,
+  "logoUrl": null,
+  "sounds": {
+    "lobby": null,
+    "questionStart": null,
+    "countdown": null,
+    "reveal": null,
+    "scoreboard": null,
+    "victory": null
+  }
+}

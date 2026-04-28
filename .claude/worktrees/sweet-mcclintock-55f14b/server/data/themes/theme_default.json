@@ -1,0 +1,35 @@
+{
+  "id": "theme_default",
+  "name": "Défaut",
+  "description": "Thème violet/néon par défaut",
+  "colors": {
+    "bg": "#0d0221",
+    "bgGradientFrom": "#1a0bdb",
+    "bgGradientTo": "#0d0221",
+    "primary": "#ff1ee8",
+    "secondary": "#39ff14",
+    "accent": "#ffe600",
+    "text": "#ffffff",
+    "textMuted": "rgba(255,255,255,0.5)",
+    "cardBg": "rgba(255,255,255,0.07)",
+    "cardBorder": "rgba(255,255,255,0.12)",
+    "timerNormal": "#39ff14",
+    "timerWarning": "#ffe600",
+    "timerUrgent": "#ff2020"
+  },
+  "fonts": {
+    "display": "Lilita One",
+    "body": "Nunito"
+  },
+  "backgroundImage": null,
+  "overlayImage": null,
+  "logoUrl": null,
+  "sounds": {
+    "lobby": null,
+    "questionStart": null,
+    "countdown": null,
+    "reveal": null,
+    "scoreboard": null,
+    "victory": null
+  }
+}

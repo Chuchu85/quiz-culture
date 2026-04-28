@@ -1,0 +1,147 @@
+{
+  "name": "Exemple des mode de questions",
+  "title": "Exemple des mode de questions",
+  "steps": [
+    {
+      "id": "step_1777231180728",
+      "gameMode": "buzzer",
+      "question": "Combien font 12x12 ?",
+      "choices": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "correctAnswer": "",
+      "timer": 30,
+      "points": 1,
+      "speedBonus": true,
+      "explanation": "144"
+    },
+    {
+      "id": "step_1777231435028",
+      "gameMode": "oeil_de_lynx",
+      "question": "De qu'elle couleurs était la combinaison de ski ?",
+      "choices": [
+        "Rouge",
+        "Orange",
+        "Verte",
+        "Jaune"
+      ],
+      "correctAnswer": "Réponse 1 ",
+      "timer": 30,
+      "points": 1,
+      "speedBonus": true,
+      "explanation": "",
+      "videoUrl": "/uploads/videos/step_1777231435028.mp4"
+    },
+    {
+      "id": "step_1777232113472",
+      "gameMode": "recherche_interdite",
+      "question": "Google est le miroir de nos curiosités les plus folles. Je vous donne le début d'une recherche, à vous de trouver la fin exacte suggérée par l'algorithme parmi les propositions !",
+      "choices": [
+        "Aspirateurs",
+        "Concombres",
+        "Rayons laser",
+        "Chaussettes"
+      ],
+      "correctAnswer": "Concombres",
+      "timer": 30,
+      "points": 1,
+      "speedBonus": true,
+      "explanation": "Cette recherche a explosé suite à une tendance virale sur les réseaux sociaux. En réalité, le chat n'a pas peur du légume en soi, mais il est surpris par l'apparition soudaine d'un objet inconnu dans son périmètre de sécurité. Les experts pensent qu'il confond la forme allongée du concombre avec celle d'un serpent, déclenchant un réflexe de survie immédiat.",
+      "searchPrefix": "Pourquoi les chats ont-ils peur des..."
+    },
+    {
+      "id": "step_1777232389153",
+      "gameMode": "blind_test",
+      "question": "Échauffez vos oreilles ! Je vous diffuse un court extrait sonore . Votre mission est simple : être le plus rapide à identifier l'artiste, le titre ou l'œuvre dont il est tiré",
+      "choices": [
+        "Prince - Kiss",
+        "Michael Jackson - Billie Jean",
+        "Queen - Another One Bites the Dust",
+        "The Weeknd - Blinding Lights"
+      ],
+      "correctAnswer": "Queen - Another One Bites the Dust",
+      "timer": 30,
+      "points": 1,
+      "speedBonus": true,
+      "explanation": "Ce rythme de batterie et cette ligne de basse sont considérés comme les plus reconnaissables de l'histoire de la musique pop. Dès la première seconde, le cerveau identifie le \"King of Pop",
+      "audio": "/uploads/audio/step_1777232389153.mp3"
+    },
+    {
+      "id": "step_1777232459036",
+      "gameMode": "top_reponse",
+      "question": "Citez l'un des 3 réseaux sociaux les plus utilisés au monde en 2024.",
+      "choices": [
+        "Facebook",
+        "YouTube",
+        "WhatsApp",
+        "Instagram"
+      ],
+      "correctAnswer": "",
+      "timer": 30,
+      "points": 1,
+      "speedBonus": true,
+      "explanation": "Facebook reste en tête avec près de 3 milliards d'utilisateurs actifs."
+    },
+    {
+      "id": "step_1777232552202",
+      "gameMode": "qui_se_cache",
+      "question": "Ouvrez grand les yeux ! Deux visages célèbres ont fusionné pour n'en former qu'un. Saurez-vous identifier les deux personnalités qui se cachent derrière cette image ?",
+      "choices": [
+        "Johnny Depp et Marilyn Monroe",
+        "Timothée Chalamet et Audrey Hepburn",
+        "Leonardo DiCaprio et Beyoncé",
+        "Orlando Bloom et Kim Kardashian"
+      ],
+      "correctAnswer": "Johnny Depp et Marilyn Monroe",
+      "timer": 30,
+      "points": 1,
+      "speedBonus": true,
+      "explanation": "Les deux personnalités sont Johnny Depp et Timothée Chalamet.",
+      "image": "/uploads/images/step_1777232552202.jpg"
+    },
+    {
+      "id": "step_1777232638585",
+      "gameMode": "info_ou_bluff",
+      "question": "Une start-up japonaise a récemment fait le buzz en inventant un accessoire connecté pour hommes appelé le \"Silky-Touch\". À quoi sert-il à l'origine ?",
+      "choices": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "correctAnswer": "Dans certaines tribus anciennes, pour vérifier si un futur mari était \"vigoureux\", il devait réussir une épreuve devant tout le village. Laquelle ?",
+      "timer": 40,
+      "points": 1,
+      "speedBonus": false,
+      "explanation": "Soulever une pierre de 100 kg (ou tenir en équilibre sur un pied pendant 24h).",
+      "bluffTime": 60,
+      "voteTime": 40
+    },
+    {
+      "id": "step_1777274913602",
+      "gameMode": "classic_qcm",
+      "question": "Quel pays a offert la Statue de la Liberté aux États-Unis ?",
+      "choices": [
+        "Le Royaume-Uni",
+        "La France",
+        "L'Italie",
+        "L'Allemagne"
+      ],
+      "correctAnswer": "Le Royaume-Uni",
+      "timer": 30,
+      "points": 1,
+      "speedBonus": true,
+      "explanation": "Elle a été offerte en 1886 pour célébrer le centenaire de la Déclaration d'indépendance américaine et sceller l'amitié entre les deux nations."
+    }
+  ],
+  "id": "quiz_1777231177290",
+  "visual": {
+    "clientName": "Ikéa",
+    "logoUrl": "/uploads/logos/quiz-logo_1777233464908.png",
+    "clientLogoUrl": "/uploads/logos/quiz-logo_1777233468820.png",
+    "backgroundUrl": "/uploads/themes/quiz_bg_quiz_1777231177290_1777233481620.jpg"
+  }
+}

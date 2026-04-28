@@ -1,0 +1,35 @@
+{
+  "id": "theme_corporate",
+  "name": "Corporate / Entreprise",
+  "description": "Design sobre et professionnel pour événements d'entreprise",
+  "colors": {
+    "bg": "#0a1628",
+    "bgGradientFrom": "#0d2044",
+    "bgGradientTo": "#0a1628",
+    "primary": "#4d9fff",
+    "secondary": "#ffffff",
+    "accent": "#00d4aa",
+    "text": "#ffffff",
+    "textMuted": "rgba(255,255,255,0.5)",
+    "cardBg": "rgba(77,159,255,0.08)",
+    "cardBorder": "rgba(77,159,255,0.25)",
+    "timerNormal": "#00d4aa",
+    "timerWarning": "#ffe600",
+    "timerUrgent": "#ff5555"
+  },
+  "fonts": {
+    "display": "Lilita One",
+    "body": "Nunito"
+  },
+  "backgroundImage": null,
+  "overlayImage": null,
+  "logoUrl": null,
+  "sounds": {
+    "lobby": null,
+    "questionStart": null,
+    "countdown": null,
+    "reveal": null,
+    "scoreboard": null,
+    "victory": null
+  }
+}

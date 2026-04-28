@@ -1,0 +1,2241 @@
+{
+  "id": "quiz_mashup",
+  "name": "Culture Mashup Quiz - Fauché - Version 1",
+  "theme": "Culture générale + Entreprise + Blind Test + Célébrités",
+  "gameMode": "random_selection",
+  "questionsPerCategory": 5,
+  "rounds": [
+    {
+      "id": "entreprise",
+      "name": "Entreprise",
+      "questions": [
+        {
+          "id": "e1",
+          "type": "text_input",
+          "theme": "Histoire",
+          "label": "En quelle année la société Fauché a-t-elle été fondée ?",
+          "acceptedAnswers": [
+            "1994"
+          ],
+          "explanation": "Fondée en 1994 par Monsieur Bobin et Micouty.",
+          "points": 1,
+          "duration": 30
+        },
+        {
+          "id": "e2",
+          "type": "text_input",
+          "theme": "Histoire",
+          "label": "Quelle était la raison sociale (ancien nom) de l'entreprise ?",
+          "acceptedAnswers": [
+            "mocoeur 86",
+            "mocoeur"
+          ],
+          "explanation": "L'ancienne raison sociale était Mocoeur 86.",
+          "points": 1,
+          "duration": 30
+        },
+        {
+          "id": "e3",
+          "type": "text_input",
+          "theme": "Valeurs",
+          "label": "Citez au moins 3 valeurs de l'entreprise Fauché.",
+          "acceptedAnswers": [
+            "cohésion",
+            "respect",
+            "réactivité",
+            "adaptabilité",
+            "technique",
+            "conseil",
+            "réseau",
+            "proximité",
+            "convivialité",
+            "partage"
+          ],
+          "explanation": "Les valeurs : cohésion, respect, réactivité, adaptabilité, technique, maîtrise du métier, conseil, réseau, proximité, convivialité, partage.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "e4",
+          "type": "text_input",
+          "theme": "Chiffres clés",
+          "label": "Combien de salariés compte l'entreprise Fauché ?",
+          "acceptedAnswers": [
+            "135"
+          ],
+          "explanation": "Fauché compte 135 salariés.",
+          "points": 1,
+          "duration": 25
+        },
+        {
+          "id": "e5",
+          "type": "text_input",
+          "theme": "Sécurité",
+          "label": "Que signifie l'acronyme EPI ?",
+          "acceptedAnswers": [
+            "équipement de protection individuelle",
+            "equipement de protection individuelle"
+          ],
+          "explanation": "EPI = Équipement de Protection Individuelle.",
+          "points": 1,
+          "duration": 30
+        },
+        {
+          "id": "e6",
+          "type": "text_input",
+          "theme": "Sécurité",
+          "label": "Citez 3 EPI obligatoires sur un chantier.",
+          "acceptedAnswers": [
+            "casque",
+            "gants",
+            "chaussures",
+            "lunettes",
+            "harnais",
+            "gilet"
+          ],
+          "explanation": "Casque, gants, chaussures de sécurité, lunettes/visière, protection auditive, harnais, vêtements adaptés…",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "e7",
+          "type": "text_input",
+          "theme": "Sécurité électrique",
+          "label": "Qui est habilité à effectuer des travaux sous tension ?",
+          "acceptedAnswers": [
+            "habilité électriquement",
+            "une personne habilitée",
+            "personne habilitée"
+          ],
+          "explanation": "Uniquement une personne habilitée électriquement avec une formation spécifique.",
+          "points": 1,
+          "duration": 30
+        },
+        {
+          "id": "e8",
+          "type": "text_input",
+          "theme": "Environnement",
+          "label": "Quels matériaux doivent être triés sur un chantier ? Citez 3 exemples.",
+          "acceptedAnswers": [
+            "gravats",
+            "métaux",
+            "plastique",
+            "verre",
+            "carton",
+            "bois"
+          ],
+          "explanation": "Gravats, métaux, plastique, verre, carton, bois doivent être triés.",
+          "points": 2,
+          "duration": 35,
+          "manualCorrection": true
+        },
+        {
+          "id": "e9",
+          "type": "multiple_choice",
+          "theme": "Sécurité incendie",
+          "label": "Une alarme incendie retentit dans le bâtiment. Que faites-vous ?",
+          "choices": [
+            {
+              "id": "A",
+              "text": "Chercher l'origine de l'incendie"
+            },
+            {
+              "id": "B",
+              "text": "Évacuer immédiatement selon le plan d'évacuation"
+            },
+            {
+              "id": "C",
+              "text": "Éteindre les lumières"
+            },
+            {
+              "id": "D",
+              "text": "Contacter la maintenance"
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "On évacue immédiatement selon le plan d'évacuation sans chercher l'origine.",
+          "points": 1,
+          "duration": 25
+        },
+        {
+          "id": "e10",
+          "type": "multiple_choice",
+          "theme": "Sécurité thermique",
+          "label": "Quels sont les signes précoces de stress thermique chez un employé travaillant en extérieur ?",
+          "choices": [
+            {
+              "id": "A",
+              "text": "Fatigue inhabituelle, crampes musculaires, confusion"
+            },
+            {
+              "id": "B",
+              "text": "Nausée, sueur excessive et température corporelle basse"
+            },
+            {
+              "id": "C",
+              "text": "Frissons, perte de vision et toux sèche"
+            },
+            {
+              "id": "D",
+              "text": "Difficulté à marcher et douleurs thoraciques"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "Fatigue inhabituelle, crampes et confusion sont les premiers signes de coup de chaleur.",
+          "points": 1,
+          "duration": 30
+        },
+        {
+          "id": "e11",
+          "type": "multiple_choice",
+          "theme": "Équipements de protection",
+          "label": "Les lunettes de sécurité doivent être portées…",
+          "choices": [
+            {
+              "id": "A",
+              "text": "Uniquement lorsqu'un superviseur est présent"
+            },
+            {
+              "id": "B",
+              "text": "En permanence dans toutes les zones à risques de projections"
+            },
+            {
+              "id": "C",
+              "text": "Seulement dans les laboratoires chimiques"
+            },
+            {
+              "id": "D",
+              "text": "Si les conditions météorologiques sont mauvaises"
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "Les lunettes sont obligatoires partout où des projections ou éclaboussures sont possibles.",
+          "points": 1,
+          "duration": 25
+        },
+        {
+          "id": "e12",
+          "type": "text_input",
+          "theme": "Procédures",
+          "label": "Que signifie un déchet D3E ou DEEE ?",
+          "acceptedAnswers": [
+            "déchet d'un équipement électrique et électronique",
+            "déchet équipement électrique et électronique"
+          ],
+          "explanation": "D3E / DEEE = Déchet d'Équipement Électrique et Électronique.",
+          "points": 1,
+          "duration": 30
+        },
+        {
+          "id": "e13",
+          "type": "text_input",
+          "theme": "Procédures",
+          "label": "Le jour d'un accident du travail, après avoir prévenu les secours, que doit-on faire ?",
+          "acceptedAnswers": [
+            "responsable hiérarchique",
+            "qse",
+            "formulaire",
+            "48 heures"
+          ],
+          "explanation": "1) Prévenir son responsable hiérarchique. 2) Prévenir le QSE. 3) Fournir le formulaire AT sous 48h.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "e14",
+          "type": "text_input",
+          "theme": "Fun",
+          "label": "Pour la blague 😄 — Quel collègue est le plus matinal ?",
+          "acceptedAnswers": [],
+          "explanation": "Toutes les réponses sont acceptées !",
+          "points": 1,
+          "duration": 20,
+          "manualCorrection": true
+        },
+        {
+          "id": "e15",
+          "type": "text_input",
+          "theme": "Sécurité",
+          "label": "Que doit-on vérifier lors de l'utilisation d'une nacelle ? (au moins 2 points)",
+          "acceptedAnswers": [
+            "habilitation",
+            "obstacles",
+            "balisage",
+            "visite",
+            "cônes",
+            "hauteur"
+          ],
+          "explanation": "Vérifier l'habilitation, faire une visite chantier (obstacles, hauteur), baliser la zone avec cônes et rubalise.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        }
+      ]
+    },
+    {
+      "id": "culture_generale",
+      "name": "Culture Générale",
+      "questions": [
+        {
+          "id": "c1",
+          "type": "multiple_choice",
+          "theme": "Géographie",
+          "label": "Quelle est la capitale de l'Australie ?",
+          "choices": [
+            {
+              "id": "A",
+              "text": "Sydney"
+            },
+            {
+              "id": "B",
+              "text": "Melbourne"
+            },
+            {
+              "id": "C",
+              "text": "Canberra"
+            },
+            {
+              "id": "D",
+              "text": "Brisbane"
+            }
+          ],
+          "correctAnswer": "C",
+          "explanation": "Canberra est la capitale de l'Australie, et non Sydney qui est la plus grande ville.",
+          "points": 1,
+          "duration": 25
+        },
+        {
+          "id": "c2",
+          "type": "text_input",
+          "theme": "Art",
+          "label": "Qui a peint la Joconde ?",
+          "acceptedAnswers": [
+            "léonard de vinci",
+            "leonard de vinci",
+            "da vinci",
+            "vinci"
+          ],
+          "explanation": "La Joconde a été peinte par Léonard de Vinci entre 1503 et 1519.",
+          "points": 1,
+          "duration": 20
+        },
+        {
+          "id": "c3",
+          "type": "multiple_choice",
+          "theme": "Sciences",
+          "label": "Combien y a-t-il de planètes dans notre système solaire ?",
+          "choices": [
+            {
+              "id": "A",
+              "text": "7"
+            },
+            {
+              "id": "B",
+              "text": "8"
+            },
+            {
+              "id": "C",
+              "text": "9"
+            },
+            {
+              "id": "D",
+              "text": "10"
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "Depuis 2006, il y a 8 planètes officielles — Pluton a été reclassée en planète naine.",
+          "points": 1,
+          "duration": 20
+        },
+        {
+          "id": "c4",
+          "type": "multiple_choice",
+          "theme": "Géographie",
+          "label": "Dans quel pays se trouve le Machu Picchu ?",
+          "choices": [
+            {
+              "id": "A",
+              "text": "Mexique"
+            },
+            {
+              "id": "B",
+              "text": "Brésil"
+            },
+            {
+              "id": "C",
+              "text": "Pérou"
+            },
+            {
+              "id": "D",
+              "text": "Colombie"
+            }
+          ],
+          "correctAnswer": "C",
+          "explanation": "Le Machu Picchu est une cité inca située au Pérou, dans les Andes.",
+          "points": 1,
+          "duration": 25
+        },
+        {
+          "id": "c5",
+          "type": "text_input",
+          "theme": "Sciences",
+          "label": "Quel est l'élément chimique représenté par le symbole \"Au\" ?",
+          "acceptedAnswers": [
+            "or",
+            "gold"
+          ],
+          "explanation": "Au vient du latin \"Aurum\" qui signifie Or.",
+          "points": 1,
+          "duration": 25
+        },
+        {
+          "id": "c6",
+          "type": "multiple_choice",
+          "theme": "Géographie",
+          "label": "Quel est le plus grand océan du monde ?",
+          "choices": [
+            {
+              "id": "A",
+              "text": "Atlantique"
+            },
+            {
+              "id": "B",
+              "text": "Pacifique"
+            },
+            {
+              "id": "C",
+              "text": "Indien"
+            },
+            {
+              "id": "D",
+              "text": "Arctique"
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "L'océan Pacifique est le plus grand, couvrant environ un tiers de la surface terrestre.",
+          "points": 1,
+          "duration": 20
+        },
+        {
+          "id": "c7",
+          "type": "text_input",
+          "theme": "Littérature",
+          "label": "Qui a écrit \"Les Misérables\" ?",
+          "acceptedAnswers": [
+            "victor hugo",
+            "hugo"
+          ],
+          "explanation": "Victor Hugo a publié Les Misérables en 1862.",
+          "points": 1,
+          "duration": 20
+        },
+        {
+          "id": "c8",
+          "type": "multiple_choice",
+          "theme": "Histoire",
+          "label": "En quelle année l'Homme a-t-il marché sur la Lune pour la première fois ?",
+          "choices": [
+            {
+              "id": "A",
+              "text": "1965"
+            },
+            {
+              "id": "B",
+              "text": "1969"
+            },
+            {
+              "id": "C",
+              "text": "1972"
+            },
+            {
+              "id": "D",
+              "text": "1975"
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "Neil Armstrong a posé le pied sur la Lune le 21 juillet 1969, mission Apollo 11.",
+          "points": 1,
+          "duration": 25
+        },
+        {
+          "id": "c9",
+          "type": "text_input",
+          "theme": "Géographie",
+          "label": "Quelle est la plus haute montagne du monde ?",
+          "acceptedAnswers": [
+            "everest",
+            "mont everest"
+          ],
+          "explanation": "L'Everest culmine à 8 849 mètres, à la frontière entre le Népal et la Chine.",
+          "points": 1,
+          "duration": 20
+        },
+        {
+          "id": "c10",
+          "type": "multiple_choice",
+          "theme": "Langues",
+          "label": "Quelle est la langue la plus parlée dans le monde (locuteurs natifs) ?",
+          "choices": [
+            {
+              "id": "A",
+              "text": "Anglais"
+            },
+            {
+              "id": "B",
+              "text": "Espagnol"
+            },
+            {
+              "id": "C",
+              "text": "Mandarin"
+            },
+            {
+              "id": "D",
+              "text": "Hindi"
+            }
+          ],
+          "correctAnswer": "C",
+          "explanation": "Le mandarin est la langue maternelle d'environ 920 millions de personnes.",
+          "points": 1,
+          "duration": 25
+        },
+        {
+          "id": "c11",
+          "type": "text_input",
+          "theme": "Géographie",
+          "label": "Dans quel pays se trouve la Tour de Pise ?",
+          "acceptedAnswers": [
+            "italie",
+            "italy"
+          ],
+          "explanation": "La Tour de Pise se trouve à Pise, en Toscane, en Italie.",
+          "points": 1,
+          "duration": 20
+        },
+        {
+          "id": "c12",
+          "type": "multiple_choice",
+          "theme": "Sport",
+          "label": "Combien de joueurs y a-t-il dans une équipe de football sur le terrain ?",
+          "choices": [
+            {
+              "id": "A",
+              "text": "10"
+            },
+            {
+              "id": "B",
+              "text": "11"
+            },
+            {
+              "id": "C",
+              "text": "12"
+            },
+            {
+              "id": "D",
+              "text": "9"
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "Une équipe de football comprend 11 joueurs sur le terrain, dont un gardien.",
+          "points": 1,
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "id": "blind_test",
+      "name": "Blind Test",
+      "questions": [
+        {
+          "id": "b1",
+          "type": "blind_test",
+          "theme": "Musique française",
+          "label": "Trouvez l'artiste et le titre de cette chanson !",
+          "audio": "/uploads/audio/aya_nakamura_copines.mp3",
+          "acceptedAnswers": [
+            "aya nakamura",
+            "copines"
+          ],
+          "correctAnswer": "Aya Nakamura — Copines",
+          "explanation": "\"Copines\" d'Aya Nakamura, sortie en 2018, est un des tubes les plus écoutés en streaming.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "b2",
+          "type": "blind_test",
+          "theme": "Pop française",
+          "label": "Trouvez l'artiste et le titre de cette chanson !",
+          "audio": "/uploads/audio/celine_dion_jirai_ou_tu_iras.mp3",
+          "acceptedAnswers": [
+            "céline dion",
+            "celine dion",
+            "j'irai où tu iras",
+            "jirai ou tu iras"
+          ],
+          "correctAnswer": "Céline Dion — J'irai où tu iras",
+          "explanation": "Duo de Céline Dion et Jean-Jacques Goldman, sorti en 1995.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "b3",
+          "type": "blind_test",
+          "theme": "Pop française",
+          "label": "Trouvez l'artiste et le titre de cette chanson !",
+          "audio": "/uploads/audio/clara_luciani_la_grenade.mp3",
+          "acceptedAnswers": [
+            "clara luciani",
+            "la grenade",
+            "grenade"
+          ],
+          "correctAnswer": "Clara Luciani — La Grenade",
+          "explanation": "\"La Grenade\" de Clara Luciani, un hymne féministe sorti en 2018.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "b4",
+          "type": "blind_test",
+          "theme": "Pop internationale",
+          "label": "Trouvez l'artiste et le titre de cette chanson !",
+          "audio": "/uploads/audio/dua_lipa_levitating.mp3",
+          "acceptedAnswers": [
+            "dua lipa",
+            "levitating"
+          ],
+          "correctAnswer": "Dua Lipa — Levitating",
+          "explanation": "\"Levitating\" de Dua Lipa, extrait de l'album Future Nostalgia (2020).",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "b5",
+          "type": "blind_test",
+          "theme": "Rock français",
+          "label": "Trouvez l'artiste et le titre de cette chanson !",
+          "audio": "/uploads/audio/indochine_laventurier.mp3",
+          "acceptedAnswers": [
+            "indochine",
+            "l'aventurier",
+            "laventurier",
+            "aventurier"
+          ],
+          "correctAnswer": "Indochine — L'Aventurier",
+          "explanation": "\"L'Aventurier\" d'Indochine, premier tube du groupe, sorti en 1982.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "b6",
+          "type": "blind_test",
+          "theme": "Chanson française",
+          "label": "Trouvez l'artiste et le titre de cette chanson !",
+          "audio": "/uploads/audio/jean_jacques_goldman_envole_moi.mp3",
+          "acceptedAnswers": [
+            "jean-jacques goldman",
+            "jean jacques goldman",
+            "goldman",
+            "envole-moi",
+            "envole moi"
+          ],
+          "correctAnswer": "Jean-Jacques Goldman — Envole-moi",
+          "explanation": "\"Envole-moi\" de Jean-Jacques Goldman, sorti en 1990, un classique de la chanson française.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "b7",
+          "type": "blind_test",
+          "theme": "Chanson française",
+          "label": "Trouvez l'artiste et le titre de cette chanson !",
+          "audio": "/uploads/audio/joe_dassin_dans_les_yeux_demilie.mp3",
+          "acceptedAnswers": [
+            "joe dassin",
+            "dassin",
+            "dans les yeux d'émilie",
+            "dans les yeux demilie",
+            "émilie"
+          ],
+          "correctAnswer": "Joe Dassin — Dans les yeux d'Émilie",
+          "explanation": "Joe Dassin, chanteur franco-américain, a sorti ce titre en 1973.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "b8",
+          "type": "blind_test",
+          "theme": "Rock français",
+          "label": "Trouvez l'artiste et le titre de cette chanson !",
+          "audio": "/uploads/audio/johnny_hallyday_allumer_le_feu.mp3",
+          "acceptedAnswers": [
+            "johnny hallyday",
+            "hallyday",
+            "allumer le feu"
+          ],
+          "correctAnswer": "Johnny Hallyday — Allumer le feu",
+          "explanation": "\"Allumer le feu\" de Johnny Hallyday, hymne rock enregistré au stade de France en 1998.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "b9",
+          "type": "blind_test",
+          "theme": "Pop française",
+          "label": "Trouvez l'artiste et le titre de cette chanson !",
+          "audio": "/uploads/audio/keenv_tahiti.mp3",
+          "acceptedAnswers": [
+            "keen'v",
+            "keenv",
+            "keen v",
+            "tahiti"
+          ],
+          "correctAnswer": "Keen'V — Tahiti",
+          "explanation": "\"Tahiti\" de Keen'V, sorti en 2012, a été un énorme succès estival en France.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "b10",
+          "type": "blind_test",
+          "theme": "Rap français",
+          "label": "Trouvez l'artiste et le titre de cette chanson !",
+          "audio": "/uploads/audio/manau_la_tribu_de_dana.mp3",
+          "acceptedAnswers": [
+            "manau",
+            "la tribu de dana",
+            "tribu de dana"
+          ],
+          "correctAnswer": "Manau — La Tribu de Dana",
+          "explanation": "\"La Tribu de Dana\" de Manau, mélange de rap et de musique celtique, sorti en 1998.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "b11",
+          "type": "blind_test",
+          "theme": "Pop internationale",
+          "label": "Trouvez l'artiste et le titre de cette chanson !",
+          "audio": "/uploads/audio/michael_jackson_billie_jean.mp3",
+          "acceptedAnswers": [
+            "michael jackson",
+            "billie jean"
+          ],
+          "correctAnswer": "Michael Jackson — Billie Jean",
+          "explanation": "\"Billie Jean\" de Michael Jackson, extrait de l'album Thriller (1982), l'un des singles les plus vendus.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "b12",
+          "type": "blind_test",
+          "theme": "Rock international",
+          "label": "Trouvez l'artiste et le titre de cette chanson !",
+          "audio": "/uploads/audio/queen_dont_stop_me_now.mp3",
+          "acceptedAnswers": [
+            "queen",
+            "don't stop me now",
+            "dont stop me now"
+          ],
+          "correctAnswer": "Queen — Don't Stop Me Now",
+          "explanation": "\"Don't Stop Me Now\" de Queen, sorti en 1978, souvent classé meilleure chanson de tous les temps.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "b13",
+          "type": "blind_test",
+          "theme": "Rap français",
+          "label": "Trouvez l'artiste et le titre de cette chanson !",
+          "audio": "/uploads/audio/soprano_cosmo.mp3",
+          "acceptedAnswers": [
+            "soprano",
+            "cosmo"
+          ],
+          "correctAnswer": "Soprano — Cosmo",
+          "explanation": "\"Cosmo\" de Soprano, sorti en 2017, a été un grand succès du rap français.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "b14",
+          "type": "blind_test",
+          "theme": "Electro-pop",
+          "label": "Trouvez l'artiste et le titre de cette chanson !",
+          "audio": "/uploads/audio/stromae_alors_on_danse.mp3",
+          "acceptedAnswers": [
+            "stromae",
+            "alors on danse"
+          ],
+          "correctAnswer": "Stromae — Alors on danse",
+          "explanation": "\"Alors on danse\" de Stromae, sorti en 2009, a été numéro 1 dans 19 pays européens.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        },
+        {
+          "id": "b15",
+          "type": "blind_test",
+          "theme": "Pop française",
+          "label": "Trouvez l'artiste et le titre de cette chanson !",
+          "audio": "/uploads/audio/la_petite_culotte_la_goffa_lolita.mp3",
+          "acceptedAnswers": [
+            "la petite culotte",
+            "la goffa lolita",
+            "goffa lolita"
+          ],
+          "correctAnswer": "La Petite Culotte — La Goffa Lolita",
+          "explanation": "\"La Goffa Lolita\" du groupe La Petite Culotte, un titre festif et décalé.",
+          "points": 2,
+          "duration": 40,
+          "manualCorrection": true
+        }
+      ]
+    },
+    {
+      "id": "celebrites",
+      "name": "Célébrités Mixées",
+      "questions": [
+        {
+          "id": "cel1",
+          "type": "celebrity_mix",
+          "theme": "Célébrités",
+          "label": "Quelles sont les deux célébrités mélangées dans cette image ?",
+          "image": "/uploads/celebrites/102.jpg",
+          "correctAnswer": "Cristiano Ronaldo + Brad Pitt",
+          "acceptedAnswers": [
+            "cristiano ronaldo",
+            "brad pitt"
+          ],
+          "explanation": "Ce visage mixe Cristiano Ronaldo et Brad Pitt !",
+          "points": 2,
+          "duration": 45,
+          "manualCorrection": true
+        },
+        {
+          "id": "cel2",
+          "type": "celebrity_mix",
+          "theme": "Célébrités",
+          "label": "Quelles sont les deux célébrités mélangées dans cette image ?",
+          "image": "/uploads/celebrites/103.jpg",
+          "correctAnswer": "Dwayne Johnson + Teddy Riner",
+          "acceptedAnswers": [
+            "dwayne johnson",
+            "the rock",
+            "teddy riner"
+          ],
+          "explanation": "Ce visage mixe Dwayne \"The Rock\" Johnson et Teddy Riner !",
+          "points": 2,
+          "duration": 45,
+          "manualCorrection": true
+        },
+        {
+          "id": "cel3",
+          "type": "celebrity_mix",
+          "theme": "Célébrités",
+          "label": "Quelles sont les deux célébrités mélangées dans cette image ?",
+          "image": "/uploads/celebrites/104.jpg",
+          "correctAnswer": "Johnny Depp + Penélope Cruz",
+          "acceptedAnswers": [
+            "johnny depp",
+            "penélope cruz",
+            "penelope cruz"
+          ],
+          "explanation": "Ce visage mixe Johnny Depp et Penélope Cruz !",
+          "points": 2,
+          "duration": 45,
+          "manualCorrection": true
+        },
+        {
+          "id": "cel4",
+          "type": "celebrity_mix",
+          "theme": "Célébrités",
+          "label": "Quelles sont les deux célébrités mélangées dans cette image ?",
+          "image": "/uploads/celebrites/105.jpg",
+          "correctAnswer": "Shakira + Christina Aguilera",
+          "acceptedAnswers": [
+            "shakira",
+            "christina aguilera",
+            "aguilera"
+          ],
+          "explanation": "Ce visage mixe Shakira et Christina Aguilera !",
+          "points": 2,
+          "duration": 45,
+          "manualCorrection": true
+        },
+        {
+          "id": "cel5",
+          "type": "celebrity_mix",
+          "theme": "Célébrités",
+          "label": "Quelles sont les deux célébrités mélangées dans cette image ?",
+          "image": "/uploads/celebrites/106.jpg",
+          "correctAnswer": "Emmanuel Macron + Nicolas Sarkozy",
+          "acceptedAnswers": [
+            "emmanuel macron",
+            "macron",
+            "nicolas sarkozy",
+            "sarkozy"
+          ],
+          "explanation": "Ce visage mixe Emmanuel Macron et Nicolas Sarkozy !",
+          "points": 2,
+          "duration": 45,
+          "manualCorrection": true
+        },
+        {
+          "id": "cel6",
+          "type": "celebrity_mix",
+          "theme": "Célébrités",
+          "label": "Quelles sont les deux célébrités mélangées dans cette image ?",
+          "image": "/uploads/celebrites/107.jpg",
+          "correctAnswer": "Leonardo DiCaprio + Pamela Anderson",
+          "acceptedAnswers": [
+            "leonardo dicaprio",
+            "dicaprio",
+            "pamela anderson",
+            "anderson"
+          ],
+          "explanation": "Ce visage mixe Leonardo DiCaprio et Pamela Anderson !",
+          "points": 2,
+          "duration": 45,
+          "manualCorrection": true
+        },
+        {
+          "id": "cel7",
+          "type": "celebrity_mix",
+          "theme": "Célébrités",
+          "label": "Quelles sont les deux célébrités mélangées dans cette image ?",
+          "image": "/uploads/celebrites/108.jpg",
+          "correctAnswer": "Aya Nakamura + Rihanna",
+          "acceptedAnswers": [
+            "aya nakamura",
+            "nakamura",
+            "rihanna"
+          ],
+          "explanation": "Ce visage mixe Aya Nakamura et Rihanna !",
+          "points": 2,
+          "duration": 45,
+          "manualCorrection": true
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "id": "e1",
+      "type": "text_input",
+      "theme": "Histoire",
+      "label": "En quelle année la société Fauché a-t-elle été fondée ?",
+      "acceptedAnswers": [
+        "1994"
+      ],
+      "explanation": "Fondée en 1994 par Monsieur Bobin et Micouty.",
+      "points": 1,
+      "duration": 30,
+      "gameMode": "classic_qcm",
+      "roundName": "Entreprise",
+      "question": "En quelle année la société Fauché a-t-elle été fondée ?",
+      "timer": 30,
+      "speedBonus": true,
+      "choices": [
+        "1990",
+        "1994",
+        "2001",
+        "1998"
+      ],
+      "correctAnswer": "1994"
+    },
+    {
+      "id": "e2",
+      "type": "text_input",
+      "theme": "Histoire",
+      "label": "Quelle était la raison sociale (ancien nom) de l'entreprise ?",
+      "acceptedAnswers": [
+        "mocoeur 86",
+        "mocoeur"
+      ],
+      "explanation": "L'ancienne raison sociale était Mocoeur 86.",
+      "points": 1,
+      "duration": 30,
+      "gameMode": "text_input",
+      "roundName": "Entreprise",
+      "question": "Quelle était la raison sociale (ancien nom) de l'entreprise ?",
+      "timer": 30,
+      "correctAnswer": "Mocoeur 86",
+      "speedBonus": true
+    },
+    {
+      "id": "e3",
+      "type": "text_input",
+      "theme": "Valeurs",
+      "label": "Citez au moins 3 valeurs de l'entreprise Fauché.",
+      "acceptedAnswers": [
+        "cohésion",
+        "respect",
+        "réactivité",
+        "adaptabilité",
+        "technique",
+        "conseil",
+        "réseau",
+        "proximité",
+        "convivialité",
+        "partage"
+      ],
+      "explanation": "Les valeurs : cohésion, respect, réactivité, adaptabilité, technique, maîtrise du métier, conseil, réseau, proximité, convivialité, partage.",
+      "points": 2,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "text_input",
+      "roundName": "Entreprise",
+      "question": "Citez au moins 3 valeurs de l'entreprise Fauché.",
+      "timer": 40
+    },
+    {
+      "id": "e4",
+      "type": "text_input",
+      "theme": "Chiffres clés",
+      "label": "Combien de salariés compte l'entreprise Fauché ?",
+      "acceptedAnswers": [
+        "135"
+      ],
+      "explanation": "Fauché compte 135 salariés.",
+      "points": 1,
+      "duration": 25,
+      "gameMode": "classic_qcm",
+      "roundName": "Entreprise",
+      "question": "Combien de salariés compte l'entreprise Fauché ?",
+      "timer": 25,
+      "choices": [
+        "125",
+        "135",
+        "145",
+        "155"
+      ],
+      "correctAnswer": "135",
+      "speedBonus": true
+    },
+    {
+      "id": "e5",
+      "type": "text_input",
+      "theme": "Sécurité",
+      "label": "Que signifie l'acronyme EPI ?",
+      "acceptedAnswers": [
+        "équipement de protection individuelle",
+        "equipement de protection individuelle"
+      ],
+      "explanation": "EPI = Équipement de Protection Individuelle.",
+      "points": 1,
+      "duration": 30,
+      "gameMode": "buzzer",
+      "roundName": "Entreprise",
+      "question": "Que signifie l'acronyme EPI ?",
+      "timer": 30
+    },
+    {
+      "id": "e6",
+      "type": "text_input",
+      "theme": "Sécurité",
+      "label": "Citez 3 EPI obligatoires sur un chantier.",
+      "acceptedAnswers": [
+        "casque",
+        "gants",
+        "chaussures",
+        "lunettes",
+        "harnais",
+        "gilet"
+      ],
+      "explanation": "Casque, gants, chaussures de sécurité, lunettes/visière, protection auditive, harnais, vêtements adaptés…",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "buzzer",
+      "roundName": "Entreprise",
+      "question": "Citez 3 EPI obligatoires sur un chantier.",
+      "timer": 40
+    },
+    {
+      "id": "e7",
+      "type": "text_input",
+      "theme": "Sécurité électrique",
+      "label": "Qui est habilité à effectuer des travaux sous tension ?",
+      "acceptedAnswers": [
+        "habilité électriquement",
+        "une personne habilitée",
+        "personne habilitée"
+      ],
+      "explanation": "Uniquement une personne habilitée électriquement avec une formation spécifique.",
+      "points": 1,
+      "duration": 30,
+      "gameMode": "text_input",
+      "roundName": "Entreprise",
+      "question": "Qui est habilité à effectuer des travaux sous tension ?",
+      "timer": 60,
+      "correctAnswer": "Uniquement une personne habilitée électriquement avec une formation spécifique.",
+      "speedBonus": true
+    },
+    {
+      "id": "e8",
+      "type": "text_input",
+      "theme": "Environnement",
+      "label": "Quels matériaux doivent être triés sur un chantier ? Citez 3 exemples.",
+      "acceptedAnswers": [
+        "gravats",
+        "métaux",
+        "plastique",
+        "verre",
+        "carton",
+        "bois"
+      ],
+      "explanation": "Gravats, métaux, plastique, verre, carton, bois doivent être triés.",
+      "points": 2,
+      "duration": 35,
+      "manualCorrection": true,
+      "gameMode": "text_input",
+      "roundName": "Entreprise",
+      "question": "Quels matériaux doivent être triés sur un chantier ? Citez 3 exemples.",
+      "timer": 60,
+      "correctAnswer": "Gravats, métaux, plastique, verre, carton, bois doivent être triés.",
+      "speedBonus": true
+    },
+    {
+      "id": "e9",
+      "type": "multiple_choice",
+      "theme": "Sécurité incendie",
+      "label": "Une alarme incendie retentit dans le bâtiment. Que faites-vous ?",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Chercher l'origine de l'incendie"
+        },
+        {
+          "id": "B",
+          "text": "Évacuer immédiatement selon le plan d'évacuation"
+        },
+        {
+          "id": "C",
+          "text": "Éteindre les lumières"
+        },
+        {
+          "id": "D",
+          "text": "Contacter la maintenance"
+        }
+      ],
+      "correctAnswer": "Évacuer immédiatement selon le plan d'évacuation",
+      "explanation": "On évacue immédiatement selon le plan d'évacuation sans chercher l'origine.",
+      "points": 1,
+      "duration": 25,
+      "gameMode": "classic_qcm",
+      "roundName": "Entreprise",
+      "question": "Une alarme incendie retentit dans le bâtiment. Que faites-vous ?",
+      "timer": 40,
+      "speedBonus": true
+    },
+    {
+      "id": "e10",
+      "type": "multiple_choice",
+      "theme": "Sécurité thermique",
+      "label": "Quels sont les signes précoces de stress thermique chez un employé travaillant en extérieur ?",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Fatigue inhabituelle, crampes musculaires, confusion"
+        },
+        {
+          "id": "B",
+          "text": "Nausée, sueur excessive et température corporelle basse"
+        },
+        {
+          "id": "C",
+          "text": "Frissons, perte de vision et toux sèche"
+        },
+        {
+          "id": "D",
+          "text": "Difficulté à marcher et douleurs thoraciques"
+        }
+      ],
+      "correctAnswer": "Fatigue inhabituelle, crampes musculaires, confusion",
+      "explanation": "Fatigue inhabituelle, crampes et confusion sont les premiers signes de coup de chaleur.",
+      "points": 1,
+      "duration": 30,
+      "gameMode": "classic_qcm",
+      "roundName": "Entreprise",
+      "question": "Quels sont les signes précoces de stress thermique chez un employé travaillant en extérieur ?",
+      "timer": 40,
+      "speedBonus": true
+    },
+    {
+      "id": "e11",
+      "type": "multiple_choice",
+      "theme": "Équipements de protection",
+      "label": "Les lunettes de sécurité doivent être portées…",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Uniquement lorsqu'un superviseur est présent"
+        },
+        {
+          "id": "B",
+          "text": "En permanence dans toutes les zones à risques de projections"
+        },
+        {
+          "id": "C",
+          "text": "Seulement dans les laboratoires chimiques"
+        },
+        {
+          "id": "D",
+          "text": "Si les conditions météorologiques sont mauvaises"
+        }
+      ],
+      "correctAnswer": "En permanence dans toutes les zones à risques de projections",
+      "explanation": "Les lunettes sont obligatoires partout où des projections ou éclaboussures sont possibles.",
+      "points": 1,
+      "duration": 25,
+      "gameMode": "classic_qcm",
+      "roundName": "Entreprise",
+      "question": "Les lunettes de sécurité doivent être portées…",
+      "timer": 40,
+      "speedBonus": true
+    },
+    {
+      "id": "e12",
+      "type": "text_input",
+      "theme": "Procédures",
+      "label": "Que signifie un déchet D3E ou DEEE ?",
+      "acceptedAnswers": [
+        "déchet d'un équipement électrique et électronique",
+        "déchet équipement électrique et électronique"
+      ],
+      "explanation": "D3E / DEEE = Déchet d'Équipement Électrique et Électronique.",
+      "points": 1,
+      "duration": 30,
+      "gameMode": "text_input",
+      "roundName": "Entreprise",
+      "question": "Que signifie un déchet D3E ou DEEE ?",
+      "timer": 30,
+      "correctAnswer": "D3E / DEEE = Déchet d'Équipement Électrique et Électronique."
+    },
+    {
+      "id": "e13",
+      "type": "text_input",
+      "theme": "Procédures",
+      "label": "Le jour d'un accident du travail, après avoir prévenu les secours, que doit-on faire ?",
+      "acceptedAnswers": [
+        "responsable hiérarchique",
+        "qse",
+        "formulaire",
+        "48 heures"
+      ],
+      "explanation": "1) Prévenir son responsable hiérarchique. 2) Prévenir le QSE. 3) Fournir le formulaire AT sous 48h.",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "buzzer",
+      "roundName": "Entreprise",
+      "question": "Le jour d'un accident du travail, après avoir prévenu les secours, que doit-on faire ?",
+      "timer": 40
+    },
+    {
+      "id": "e14",
+      "type": "text_input",
+      "theme": "Fun",
+      "label": "Pour la blague 😄 — Quel collègue est le plus matinal ?",
+      "acceptedAnswers": [],
+      "explanation": "Toutes les réponses sont acceptées !",
+      "points": 1,
+      "duration": 20,
+      "manualCorrection": true,
+      "gameMode": "buzzer",
+      "roundName": "Entreprise",
+      "question": "Pour la blague 😄 Quel collègue est le plus matinal ?",
+      "timer": 40
+    },
+    {
+      "id": "e15",
+      "type": "text_input",
+      "theme": "Sécurité",
+      "label": "Que doit-on vérifier lors de l'utilisation d'une nacelle ? (au moins 2 points)",
+      "acceptedAnswers": [
+        "habilitation",
+        "obstacles",
+        "balisage",
+        "visite",
+        "cônes",
+        "hauteur"
+      ],
+      "explanation": "Vérifier l'habilitation, faire une visite chantier (obstacles, hauteur), baliser la zone avec cônes et rubalise.",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "buzzer",
+      "roundName": "Entreprise",
+      "question": "Que doit-on vérifier lors de l'utilisation d'une nacelle ? (au moins 2 points)",
+      "timer": 40
+    },
+    {
+      "id": "c1",
+      "type": "multiple_choice",
+      "theme": "Géographie",
+      "label": "Quelle est la capitale de l'Australie ?",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Sydney"
+        },
+        {
+          "id": "B",
+          "text": "Melbourne"
+        },
+        {
+          "id": "C",
+          "text": "Canberra"
+        },
+        {
+          "id": "D",
+          "text": "Brisbane"
+        }
+      ],
+      "correctAnswer": "Canberra",
+      "explanation": "Canberra est la capitale de l'Australie, et non Sydney qui est la plus grande ville.",
+      "points": 1,
+      "duration": 25,
+      "gameMode": "classic_qcm",
+      "roundName": "Culture Générale",
+      "question": "Quelle est la capitale de l'Australie ?",
+      "timer": 25,
+      "speedBonus": true
+    },
+    {
+      "id": "c2",
+      "type": "text_input",
+      "theme": "Art",
+      "label": "Qui a peint la Joconde ?",
+      "acceptedAnswers": [
+        "léonard de vinci",
+        "leonard de vinci",
+        "da vinci",
+        "vinci"
+      ],
+      "explanation": "La Joconde a été peinte par Léonard de Vinci entre 1503 et 1519.",
+      "points": 1,
+      "duration": 20,
+      "gameMode": "text_input",
+      "roundName": "Culture Générale",
+      "question": "Qui a peint la Joconde ?",
+      "timer": 20,
+      "correctAnswer": "Léonard de Vinci ",
+      "speedBonus": true
+    },
+    {
+      "id": "c3",
+      "type": "multiple_choice",
+      "theme": "Sciences",
+      "label": "Combien y a-t-il de planètes dans notre système solaire ?",
+      "choices": [
+        {
+          "id": "A",
+          "text": "7"
+        },
+        {
+          "id": "B",
+          "text": "8"
+        },
+        {
+          "id": "C",
+          "text": "9"
+        },
+        {
+          "id": "D",
+          "text": "10"
+        }
+      ],
+      "correctAnswer": "8",
+      "explanation": "Depuis 2006, il y a 8 planètes officielles — Pluton a été reclassée en planète naine.",
+      "points": 1,
+      "duration": 20,
+      "gameMode": "classic_qcm",
+      "roundName": "Culture Générale",
+      "question": "Combien y a-t-il de planètes dans notre système solaire ?",
+      "timer": 20,
+      "speedBonus": true
+    },
+    {
+      "id": "c4",
+      "type": "multiple_choice",
+      "theme": "Géographie",
+      "label": "Dans quel pays se trouve le Machu Picchu ?",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Mexique"
+        },
+        {
+          "id": "B",
+          "text": "Brésil"
+        },
+        {
+          "id": "C",
+          "text": "Pérou"
+        },
+        {
+          "id": "D",
+          "text": "Colombie"
+        }
+      ],
+      "correctAnswer": "Pérou",
+      "explanation": "Le Machu Picchu est une cité inca située au Pérou, dans les Andes.",
+      "points": 1,
+      "duration": 25,
+      "gameMode": "classic_qcm",
+      "roundName": "Culture Générale",
+      "question": "Dans quel pays se trouve le Machu Picchu ?",
+      "timer": 25
+    },
+    {
+      "id": "c5",
+      "type": "text_input",
+      "theme": "Sciences",
+      "label": "Quel est l'élément chimique représenté par le symbole \"Au\" ?",
+      "acceptedAnswers": [
+        "or",
+        "gold"
+      ],
+      "explanation": "Au vient du latin \"Aurum\" qui signifie Or.",
+      "points": 1,
+      "duration": 25,
+      "gameMode": "text_input",
+      "roundName": "Culture Générale",
+      "question": "Quel est l'élément chimique représenté par le symbole \"Au\" ?",
+      "timer": 25,
+      "correctAnswer": "Aurum",
+      "speedBonus": true
+    },
+    {
+      "id": "c6",
+      "type": "multiple_choice",
+      "theme": "Géographie",
+      "label": "Quel est le plus grand océan du monde ?",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Atlantique"
+        },
+        {
+          "id": "B",
+          "text": "Pacifique"
+        },
+        {
+          "id": "C",
+          "text": "Indien"
+        },
+        {
+          "id": "D",
+          "text": "Arctique"
+        }
+      ],
+      "correctAnswer": "Pacifique",
+      "explanation": "L'océan Pacifique est le plus grand, couvrant environ un tiers de la surface terrestre.",
+      "points": 1,
+      "duration": 20,
+      "gameMode": "classic_qcm",
+      "roundName": "Culture Générale",
+      "question": "Quel est le plus grand océan du monde ?",
+      "timer": 20,
+      "speedBonus": true
+    },
+    {
+      "id": "c7",
+      "type": "text_input",
+      "theme": "Littérature",
+      "label": "Qui a écrit \"Les Misérables\" ?",
+      "acceptedAnswers": [
+        "victor hugo",
+        "hugo"
+      ],
+      "explanation": "Victor Hugo a publié Les Misérables en 1862.",
+      "points": 1,
+      "duration": 20,
+      "gameMode": "text_input",
+      "roundName": "Culture Générale",
+      "question": "Qui a écrit \"Les Misérables\" ?",
+      "timer": 20,
+      "correctAnswer": "Victor Hugo",
+      "speedBonus": true
+    },
+    {
+      "id": "c8",
+      "type": "multiple_choice",
+      "theme": "Histoire",
+      "label": "En quelle année l'Homme a-t-il marché sur la Lune pour la première fois ?",
+      "choices": [
+        {
+          "id": "A",
+          "text": "1965"
+        },
+        {
+          "id": "B",
+          "text": "1969"
+        },
+        {
+          "id": "C",
+          "text": "1972"
+        },
+        {
+          "id": "D",
+          "text": "1975"
+        }
+      ],
+      "correctAnswer": "1969",
+      "explanation": "Neil Armstrong a posé le pied sur la Lune le 21 juillet 1969, mission Apollo 11.",
+      "points": 1,
+      "duration": 25,
+      "gameMode": "classic_qcm",
+      "roundName": "Culture Générale",
+      "question": "En quelle année l'Homme a-t-il marché sur la Lune pour la première fois ?",
+      "timer": 25,
+      "speedBonus": true
+    },
+    {
+      "id": "c9",
+      "type": "text_input",
+      "theme": "Géographie",
+      "label": "Quelle est la plus haute montagne du monde ?",
+      "acceptedAnswers": [
+        "everest",
+        "mont everest"
+      ],
+      "explanation": "L'Everest culmine à 8 849 mètres, à la frontière entre le Népal et la Chine.",
+      "points": 1,
+      "duration": 20,
+      "gameMode": "text_input",
+      "roundName": "Culture Générale",
+      "question": "Quelle est la plus haute montagne du monde ?",
+      "timer": 20,
+      "correctAnswer": "L'Everest",
+      "speedBonus": true
+    },
+    {
+      "id": "c10",
+      "type": "multiple_choice",
+      "theme": "Langues",
+      "label": "Quelle est la langue la plus parlée dans le monde (locuteurs natifs) ?",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Anglais"
+        },
+        {
+          "id": "B",
+          "text": "Espagnol"
+        },
+        {
+          "id": "C",
+          "text": "Mandarin"
+        },
+        {
+          "id": "D",
+          "text": "Hindi"
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Le mandarin est la langue maternelle d'environ 920 millions de personnes.",
+      "points": 1,
+      "duration": 25,
+      "gameMode": "classic_qcm",
+      "roundName": "Culture Générale",
+      "question": "Quelle est la langue la plus parlée dans le monde (locuteurs natifs) ?",
+      "timer": 25,
+      "speedBonus": true
+    },
+    {
+      "id": "c11",
+      "type": "text_input",
+      "theme": "Géographie",
+      "label": "Dans quel pays se trouve la Tour de Pise ?",
+      "acceptedAnswers": [
+        "italie",
+        "italy"
+      ],
+      "explanation": "La Tour de Pise se trouve à Pise, en Toscane, en Italie.",
+      "points": 1,
+      "duration": 20,
+      "gameMode": "buzzer",
+      "roundName": "Culture Générale",
+      "question": "Dans quel pays se trouve la Tour de Pise ?",
+      "timer": 40,
+      "speedBonus": false
+    },
+    {
+      "id": "c12",
+      "type": "multiple_choice",
+      "theme": "Sport",
+      "label": "Combien de joueurs y a-t-il dans une équipe de football sur le terrain ?",
+      "choices": [
+        {
+          "id": "A",
+          "text": "10"
+        },
+        {
+          "id": "B",
+          "text": "11"
+        },
+        {
+          "id": "C",
+          "text": "12"
+        },
+        {
+          "id": "D",
+          "text": "9"
+        }
+      ],
+      "correctAnswer": "11",
+      "explanation": "Une équipe de football comprend 11 joueurs sur le terrain, dont un gardien.",
+      "points": 1,
+      "duration": 15,
+      "gameMode": "classic_qcm",
+      "roundName": "Culture Générale",
+      "question": "Combien de joueurs y a-t-il dans une équipe de football sur le terrain ?",
+      "timer": 15,
+      "speedBonus": true
+    },
+    {
+      "id": "b1",
+      "type": "blind_test",
+      "theme": "Musique française",
+      "label": "Trouvez l'artiste et le titre de cette chanson !",
+      "audio": "/uploads/audio/aya_nakamura_copines.mp3",
+      "acceptedAnswers": [
+        "aya nakamura",
+        "copines"
+      ],
+      "correctAnswer": "Aya Nakamura — Copines",
+      "explanation": "\"Copines\" d'Aya Nakamura, sortie en 2018, est un des tubes les plus écoutés en streaming.",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "blind_test",
+      "roundName": "Blind Test",
+      "question": "Trouvez l'artiste et le titre de cette chanson !",
+      "timer": 40,
+      "choices": [
+        "Aya Nakamura — Djadja",
+        "Imen Es — Ma Copine",
+        "Wejdene — Coco",
+        "Aya Nakamura — Copines"
+      ],
+      "speedBonus": true
+    },
+    {
+      "id": "b2",
+      "type": "blind_test",
+      "theme": "Pop française",
+      "label": "Trouvez l'artiste et le titre de cette chanson !",
+      "audio": "/uploads/audio/celine_dion_jirai_ou_tu_iras.mp3",
+      "acceptedAnswers": [
+        "céline dion",
+        "celine dion",
+        "j'irai où tu iras",
+        "jirai ou tu iras"
+      ],
+      "correctAnswer": "Céline Dion — J'irai où tu iras",
+      "explanation": "Duo de Céline Dion et Jean-Jacques Goldman, sorti en 1995.",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "blind_test",
+      "roundName": "Blind Test",
+      "question": "Trouvez l'artiste et le titre de cette chanson !",
+      "timer": 40,
+      "choices": [
+        "Jean-Jacques Goldman & Sirima — Là-bas",
+        "Céline Dion — Pour que tu m'aimes encore",
+        "Marc Lavoine & Catherine Ringer — Qu'est-ce que t'es belle",
+        "Céline Dion — J'irai où tu iras"
+      ],
+      "speedBonus": true
+    },
+    {
+      "id": "b3",
+      "type": "blind_test",
+      "theme": "Pop française",
+      "label": "Trouvez l'artiste et le titre de cette chanson !",
+      "audio": "/uploads/audio/clara_luciani_la_grenade.mp3",
+      "acceptedAnswers": [
+        "clara luciani",
+        "la grenade",
+        "grenade"
+      ],
+      "correctAnswer": "Clara Luciani — La Grenade",
+      "explanation": "\"La Grenade\" de Clara Luciani, un hymne féministe sorti en 2018.",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "blind_test",
+      "roundName": "Blind Test",
+      "question": "Trouvez l'artiste et le titre de cette chanson !",
+      "timer": 40,
+      "choices": [
+        "Juliette Armanet — Le Dernier Jour du Disco",
+        "Juliette Armanet — Flamme",
+        "L'Impératrice — Anomalie bleue",
+        "Clara Luciani — La Grenade"
+      ],
+      "speedBonus": true
+    },
+    {
+      "id": "b4",
+      "type": "blind_test",
+      "theme": "Pop internationale",
+      "label": "Trouvez l'artiste et le titre de cette chanson !",
+      "audio": "/uploads/audio/dua_lipa_levitating.mp3",
+      "acceptedAnswers": [
+        "dua lipa",
+        "levitating"
+      ],
+      "correctAnswer": "Dua Lipa — Levitating",
+      "explanation": "\"Levitating\" de Dua Lipa, extrait de l'album Future Nostalgia (2020).",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "blind_test",
+      "roundName": "Blind Test",
+      "question": "Trouvez l'artiste et le titre de cette chanson !",
+      "timer": 40,
+      "choices": [
+        "Dua Lipa — Don't Start Now",
+        "Miley Cyrus — Flowers",
+        "Miley Cyrus — Midnight Sky",
+        "Dua Lipa — Levitating"
+      ],
+      "speedBonus": true
+    },
+    {
+      "id": "b5",
+      "type": "blind_test",
+      "theme": "Rock français",
+      "label": "Trouvez l'artiste et le titre de cette chanson !",
+      "audio": "/uploads/audio/indochine_laventurier.mp3",
+      "acceptedAnswers": [
+        "indochine",
+        "l'aventurier",
+        "laventurier",
+        "aventurier"
+      ],
+      "correctAnswer": "Indochine — L'Aventurier",
+      "explanation": "\"L'Aventurier\" d'Indochine, premier tube du groupe, sorti en 1982.",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "blind_test",
+      "roundName": "Blind Test",
+      "question": "Trouvez l'artiste et le titre de cette chanson !",
+      "timer": 40,
+      "choices": [
+        "Téléphone — Un autre monde",
+        "Indochine — L'Aventurier",
+        "Partenaire Particulier — Partenaire Particulier",
+        "Indochine — Canary Bay"
+      ],
+      "speedBonus": true
+    },
+    {
+      "id": "b6",
+      "type": "blind_test",
+      "theme": "Chanson française",
+      "label": "Trouvez l'artiste et le titre de cette chanson !",
+      "audio": "/uploads/audio/jean_jacques_goldman_envole_moi.mp3",
+      "acceptedAnswers": [
+        "jean-jacques goldman",
+        "jean jacques goldman",
+        "goldman",
+        "envole-moi",
+        "envole moi"
+      ],
+      "correctAnswer": " Jean-Jacques Goldman — Envole-moi",
+      "explanation": "\"Envole-moi\" de Jean-Jacques Goldman, sorti en 1990, un classique de la chanson française.",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "blind_test",
+      "roundName": "Blind Test",
+      "question": "Trouvez l'artiste et le titre de cette chanson !",
+      "timer": 40,
+      "choices": [
+        "Jean-Jacques Goldman — Au bout de mes rêves",
+        "Jean-Jacques Goldman — Je marche seul",
+        "Jean-Jacques Goldman — Je marche seul",
+        " Jean-Jacques Goldman — Envole-moi"
+      ],
+      "speedBonus": true
+    },
+    {
+      "id": "b7",
+      "type": "blind_test",
+      "theme": "Chanson française",
+      "label": "Trouvez l'artiste et le titre de cette chanson !",
+      "audio": "/uploads/audio/joe_dassin_dans_les_yeux_demilie.mp3",
+      "acceptedAnswers": [
+        "joe dassin",
+        "dassin",
+        "dans les yeux d'émilie",
+        "dans les yeux demilie",
+        "émilie"
+      ],
+      "correctAnswer": "Joe Dassin — Dans les yeux d'Émilie",
+      "explanation": "Joe Dassin, chanteur franco-américain, a sorti ce titre en 1973.",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "blind_test",
+      "roundName": "Blind Test",
+      "question": "Trouvez l'artiste et le titre de cette chanson !",
+      "timer": 40,
+      "choices": [
+        "Joe Dassin — Dans les yeux d'Émilie",
+        "Michel Delpech — Pour un flirt",
+        "Claude François — Magnolias for Ever",
+        "Nino Ferrer — Mirza"
+      ],
+      "speedBonus": true
+    },
+    {
+      "id": "b8",
+      "type": "blind_test",
+      "theme": "Rock français",
+      "label": "Trouvez l'artiste et le titre de cette chanson !",
+      "audio": "/uploads/audio/johnny_hallyday_allumer_le_feu.mp3",
+      "acceptedAnswers": [
+        "johnny hallyday",
+        "hallyday",
+        "allumer le feu"
+      ],
+      "correctAnswer": "Johnny Hallyday — Que je t'aime",
+      "explanation": "\"Allumer le feu\" de Johnny Hallyday, hymne rock enregistré au stade de France en 1998.",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "blind_test",
+      "roundName": "Blind Test",
+      "question": "Trouvez l'artiste et le titre de cette chanson !",
+      "timer": 40,
+      "choices": [
+        "Johnny Hallyday — L'Envie",
+        "Johnny Hallyday — Marie",
+        "Johnny Hallyday — Que je t'aime",
+        "Johnny Hallyday — Que je t'aime"
+      ],
+      "speedBonus": true
+    },
+    {
+      "id": "b9",
+      "type": "blind_test",
+      "theme": "Pop française",
+      "label": "Trouvez l'artiste et le titre de cette chanson !",
+      "audio": "/uploads/audio/keenv_tahiti.mp3",
+      "acceptedAnswers": [
+        "keen'v",
+        "keenv",
+        "keen v",
+        "tahiti"
+      ],
+      "correctAnswer": "Keen'V — Tahiti",
+      "explanation": "\"Tahiti\" de Keen'V, sorti en 2012, a été un énorme succès estival en France.",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "blind_test",
+      "roundName": "Blind Test",
+      "question": "Trouvez l'artiste et le titre de cette chanson !",
+      "timer": 40,
+      "choices": [
+        "Keen'V — Tahiti",
+        "Laurent Voulzy — Belle-Île-en-Mer",
+        "Naza — Loin de moi",
+        "Magic System — Bouger Bouger"
+      ],
+      "speedBonus": true
+    },
+    {
+      "id": "b10",
+      "type": "blind_test",
+      "theme": "Rap français",
+      "label": "Trouvez l'artiste et le titre de cette chanson !",
+      "audio": "/uploads/audio/manau_la_tribu_de_dana.mp3",
+      "acceptedAnswers": [
+        "manau",
+        "la tribu de dana",
+        "tribu de dana"
+      ],
+      "correctAnswer": "Manau — La Tribu de Dana",
+      "explanation": "\"La Tribu de Dana\" de Manau, mélange de rap et de musique celtique, sorti en 1998.",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "blind_test",
+      "roundName": "Blind Test",
+      "question": "Trouvez l'artiste et le titre de cette chanson !",
+      "timer": 40,
+      "choices": [
+        "Nolwenn Leroy — Tri Martolod",
+        "Manau — Mais qui est la belette ?",
+        "Alan Stivell — Tri Martolod ",
+        "Manau — La Tribu de Dana"
+      ],
+      "speedBonus": true
+    },
+    {
+      "id": "b11",
+      "type": "blind_test",
+      "theme": "Pop internationale",
+      "label": "Trouvez l'artiste et le titre de cette chanson !",
+      "audio": "/uploads/audio/michael_jackson_billie_jean.mp3",
+      "acceptedAnswers": [
+        "michael jackson",
+        "billie jean"
+      ],
+      "correctAnswer": "Michael Jackson — Billie Jean",
+      "explanation": "\"Billie Jean\" de Michael Jackson, extrait de l'album Thriller (1982), l'un des singles les plus vendus.",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "blind_test",
+      "roundName": "Blind Test",
+      "question": "Trouvez l'artiste et le titre de cette chanson !",
+      "timer": 40,
+      "choices": [
+        "Michael Jackson — Beat It",
+        "Michael Jackson — Don't Stop 'Til You Get Enough",
+        "Michael Jackson — Billie Jean",
+        "Michael Jackson — Bad"
+      ],
+      "speedBonus": true
+    },
+    {
+      "id": "b12",
+      "type": "blind_test",
+      "theme": "Rock international",
+      "label": "Trouvez l'artiste et le titre de cette chanson !",
+      "audio": "/uploads/audio/queen_dont_stop_me_now.mp3",
+      "acceptedAnswers": [
+        "queen",
+        "don't stop me now",
+        "dont stop me now"
+      ],
+      "correctAnswer": "Queen — Don't Stop Me Now",
+      "explanation": "\"Don't Stop Me Now\" de Queen, sorti en 1978, souvent classé meilleure chanson de tous les temps.",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "blind_test",
+      "roundName": "Blind Test",
+      "question": "Trouvez l'artiste et le titre de cette chanson !",
+      "timer": 40,
+      "choices": [
+        "Queen — Bohemian Rhapsody",
+        "Queen — Don't Stop Me Now",
+        "Queen — Killer Queen",
+        "Queen — Radio Ga Ga"
+      ],
+      "speedBonus": true
+    },
+    {
+      "id": "b13",
+      "type": "blind_test",
+      "theme": "Rap français",
+      "label": "Trouvez l'artiste et le titre de cette chanson !",
+      "audio": "/uploads/audio/soprano_cosmo.mp3",
+      "acceptedAnswers": [
+        "soprano",
+        "cosmo"
+      ],
+      "correctAnswer": "Soprano — En feu",
+      "explanation": "\"Cosmo\" de Soprano, sorti en 2017, a été un grand succès du rap français.",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "blind_test",
+      "roundName": "Blind Test",
+      "question": "Trouvez l'artiste et le titre de cette chanson !",
+      "timer": 40,
+      "choices": [
+        "Soprano — Le Coach",
+        "Soprano — Clown",
+        "Soprano — En feu",
+        "Soprano — À nos héros du quotidien"
+      ]
+    },
+    {
+      "id": "b14",
+      "type": "blind_test",
+      "theme": "Electro-pop",
+      "label": "Trouvez l'artiste et le titre de cette chanson !",
+      "audio": "/uploads/audio/stromae_alors_on_danse.mp3",
+      "acceptedAnswers": [
+        "stromae",
+        "alors on danse"
+      ],
+      "correctAnswer": "Stromae — Alors on danse",
+      "explanation": "\"Alors on danse\" de Stromae, sorti en 2009, a été numéro 1 dans 19 pays européens.",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "blind_test",
+      "roundName": "Blind Test",
+      "question": "Trouvez l'artiste et le titre de cette chanson !",
+      "timer": 40,
+      "choices": [
+        "Lous and The Yakuza — Dilemme",
+        "Damso — Feu de bois",
+        "Yolanda Be Cool — We No Speak Americano",
+        "Stromae — Alors on danse"
+      ],
+      "speedBonus": true
+    },
+    {
+      "id": "b15",
+      "type": "blind_test",
+      "theme": "Pop française",
+      "label": "Trouvez l'artiste et le titre de cette chanson !",
+      "audio": "/uploads/audio/la_petite_culotte_la_goffa_lolita.mp3",
+      "acceptedAnswers": [
+        "la petite culotte",
+        "la goffa lolita",
+        "goffa lolita"
+      ],
+      "correctAnswer": "La Petite Culotte — La Goffa Lolita",
+      "explanation": "\"La Goffa Lolita\" du groupe La Petite Culotte, un titre festif et décalé.",
+      "points": 1,
+      "duration": 40,
+      "manualCorrection": true,
+      "gameMode": "blind_test",
+      "roundName": "Blind Test",
+      "question": "Trouvez l'artiste et le titre de cette chanson !",
+      "timer": 40,
+      "choices": [
+        "La Petite Culotte — La Goffa Lolita",
+        "Patrick Fiori — Terra Corsa",
+        "I Muvrini — Amsterdam",
+        "Al Bano & Romina Power — Felicita"
+      ],
+      "speedBonus": true
+    },
+    {
+      "id": "cel1",
+      "type": "celebrity_mix",
+      "theme": "Célébrités",
+      "label": "Quelles sont les deux célébrités mélangées dans cette image ?",
+      "image": "/uploads/images/cel1.jpg",
+      "correctAnswer": "Aya Nakamura & Will Smith ",
+      "acceptedAnswers": [
+        "cristiano ronaldo",
+        "brad pitt"
+      ],
+      "explanation": "Ce visage mixe Aya Nakamura & Will Smith ! ",
+      "points": 2,
+      "duration": 45,
+      "manualCorrection": true,
+      "gameMode": "qui_se_cache",
+      "roundName": "Célébrités Mixées",
+      "question": "Quelles sont les deux célébrités mélangées dans cette image ?",
+      "timer": 40,
+      "speedBonus": true,
+      "choices": [
+        "Aya Nakamura & Will Smith ",
+        "Michael B. Jordan & Jada Pinkett Smith",
+        "Jamie Foxx & Beyoncé",
+        "Eddie Murphy & Tyra Banks"
+      ]
+    },
+    {
+      "id": "cel2",
+      "type": "celebrity_mix",
+      "theme": "Célébrités",
+      "label": "Quelles sont les deux célébrités mélangées dans cette image ?",
+      "image": "/uploads/images/cel2.jpg",
+      "correctAnswer": "Leonardo DiCaprio & Neymar ",
+      "acceptedAnswers": [
+        "dwayne johnson",
+        "the rock",
+        "teddy riner"
+      ],
+      "explanation": "Ce visage mixe Brad Pitt & Cristiano Ronaldo ! ",
+      "points": 2,
+      "duration": 45,
+      "manualCorrection": true,
+      "gameMode": "qui_se_cache",
+      "roundName": "Célébrités Mixées",
+      "question": "Quelles sont les deux célébrités mélangées dans cette image ?",
+      "timer": 45,
+      "speedBonus": true,
+      "choices": [
+        "Chris Hemsworth & Sergio Ramos",
+        "Leonardo DiCaprio & Neymar ",
+        "Brad Pitt & Cristiano Ronaldo",
+        "Tom Cruise & David Beckham"
+      ]
+    },
+    {
+      "id": "cel3",
+      "type": "celebrity_mix",
+      "theme": "Célébrités",
+      "label": "Quelles sont les deux célébrités mélangées dans cette image ?",
+      "image": "/uploads/images/cel3.jpg",
+      "correctAnswer": "Emmanuel Macron & Johnny Hallyday",
+      "acceptedAnswers": [
+        "johnny depp",
+        "penélope cruz",
+        "penelope cruz"
+      ],
+      "explanation": "Ce visage mixe Emmanuel Macron & Johnny Hallyday ! ",
+      "points": 2,
+      "duration": 45,
+      "manualCorrection": true,
+      "gameMode": "qui_se_cache",
+      "roundName": "Célébrités Mixées",
+      "question": "Quelles sont les deux célébrités mélangées dans cette image ?",
+      "timer": 45,
+      "speedBonus": true,
+      "choices": [
+        "Emmanuel Macron & Johnny Hallyday",
+        "Alain Delon & Nicolas Sarkozy",
+        "Jean Dujardin & François Hollande",
+        "Patrick Bruel & Laurent Delahousse"
+      ]
+    },
+    {
+      "id": "cel4",
+      "type": "celebrity_mix",
+      "theme": "Célébrités",
+      "label": "Quelles sont les deux célébrités mélangées dans cette image ?",
+      "image": "/uploads/images/cel4.jpg",
+      "correctAnswer": "Marion Cotillard & Taylor Swift ",
+      "acceptedAnswers": [
+        "shakira",
+        "christina aguilera",
+        "aguilera"
+      ],
+      "explanation": "Ce visage mixe Marion Cotillard & Taylor Swift ! ",
+      "points": 2,
+      "duration": 45,
+      "manualCorrection": true,
+      "gameMode": "qui_se_cache",
+      "roundName": "Célébrités Mixées",
+      "question": "Quelles sont les deux célébrités mélangées dans cette image ?",
+      "timer": 45,
+      "speedBonus": true,
+      "choices": [
+        "Marion Cotillard & Sophie Marceau",
+        "Marion Cotillard & Adèle Exarchopoulos",
+        "Marion Cotillard & Léa Seydoux",
+        "Marion Cotillard & Taylor Swift "
+      ]
+    },
+    {
+      "id": "cel5",
+      "type": "celebrity_mix",
+      "theme": "Célébrités",
+      "label": "Quelles sont les deux célébrités mélangées dans cette image ?",
+      "image": "/uploads/images/cel5.jpg",
+      "correctAnswer": "Omar Sy & Dwayne Johnson ",
+      "acceptedAnswers": [
+        "emmanuel macron",
+        "macron",
+        "nicolas sarkozy",
+        "sarkozy"
+      ],
+      "explanation": "Ce visage mixe Omar Sy & Dwayne Johnson ! ",
+      "points": 2,
+      "duration": 45,
+      "manualCorrection": true,
+      "gameMode": "qui_se_cache",
+      "roundName": "Célébrités Mixées",
+      "question": "Quelles sont les deux célébrités mélangées dans cette image ?",
+      "timer": 45,
+      "speedBonus": true,
+      "choices": [
+        "Tyrese Gibson & Moussa Maaskri",
+        "Omar Sy & Dwayne Johnson ",
+        "Vin Diesel & Teddy Riner",
+        "Idris Elba & Thierry Henry"
+      ]
+    },
+    {
+      "id": "cel6",
+      "type": "celebrity_mix",
+      "theme": "Célébrités",
+      "label": "Quelles sont les deux célébrités mélangées dans cette image ?",
+      "image": "/uploads/images/cel6.jpg",
+      "correctAnswer": "Rihanna & Johnny Depp",
+      "acceptedAnswers": [
+        "leonardo dicaprio",
+        "dicaprio",
+        "pamela anderson",
+        "anderson"
+      ],
+      "explanation": "Ce visage mixe Rihanna & Johnny Depp ! ",
+      "points": 2,
+      "duration": 45,
+      "manualCorrection": true,
+      "gameMode": "qui_se_cache",
+      "roundName": "Célébrités Mixées",
+      "question": "Quelles sont les deux célébrités mélangées dans cette image ?",
+      "timer": 45,
+      "speedBonus": true,
+      "choices": [
+        "Rihanna & Johnny Depp",
+        "Beyoncé & Orlando Bloom",
+        "Rihanna & Lenny Kravitz",
+        "Beyoncé & Johnny Depp"
+      ]
+    },
+    {
+      "id": "cel7",
+      "type": "celebrity_mix",
+      "theme": "Célébrités",
+      "label": "Quelles sont les deux célébrités mélangées dans cette image ?",
+      "image": "/uploads/images/cel7.jpg",
+      "correctAnswer": "Zendaya & Leonardo DiCaprio ",
+      "acceptedAnswers": [
+        "aya nakamura",
+        "nakamura",
+        "rihanna"
+      ],
+      "explanation": "Ce visage mixe Zendaya & Leonardo DiCaprio ! ",
+      "points": 2,
+      "duration": 45,
+      "manualCorrection": true,
+      "gameMode": "qui_se_cache",
+      "roundName": "Célébrités Mixées",
+      "question": "Quelles sont les deux célébrités mélangées dans cette image ?",
+      "timer": 45,
+      "speedBonus": true,
+      "choices": [
+        "Tom Holland & Timothée Chalamet",
+        "Bella Hadid & Brad Pitt",
+        "Zendaya & Leonardo DiCaprio ",
+        "Brad Pitt & Zendaya"
+      ]
+    }
+  ],
+  "sessionCode": "Fauché",
+  "visual": {
+    "clientName": "Fauché",
+    "logoUrl": "/uploads/logos/quiz-logo_1777279066250.png",
+    "clientLogoUrl": "/uploads/logos/quiz-logo_1777279090403.png",
+    "backgroundUrl": "/uploads/themes/quiz_bg_quiz_mashup_1777279559560.jpg"
+  },
+  "title": "Culture Mashup Quiz - Fauché - Version 1"
+}

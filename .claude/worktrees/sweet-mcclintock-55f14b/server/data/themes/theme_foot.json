@@ -1,0 +1,35 @@
+{
+  "id": "theme_foot",
+  "name": "Thématique Foot",
+  "description": "Couleurs terrain de football, ambiance stade",
+  "colors": {
+    "bg": "#0a1f0a",
+    "bgGradientFrom": "#0d3d0d",
+    "bgGradientTo": "#0a1f0a",
+    "primary": "#39ff14",
+    "secondary": "#ffffff",
+    "accent": "#ffe600",
+    "text": "#ffffff",
+    "textMuted": "rgba(255,255,255,0.5)",
+    "cardBg": "rgba(57,255,20,0.08)",
+    "cardBorder": "rgba(57,255,20,0.25)",
+    "timerNormal": "#39ff14",
+    "timerWarning": "#ffe600",
+    "timerUrgent": "#ff2020"
+  },
+  "fonts": {
+    "display": "Lilita One",
+    "body": "Nunito"
+  },
+  "backgroundImage": "/uploads/themes/theme_bg_theme_foot_1777209659892.avif",
+  "overlayImage": null,
+  "logoUrl": null,
+  "sounds": {
+    "lobby": null,
+    "questionStart": null,
+    "countdown": null,
+    "reveal": null,
+    "scoreboard": null,
+    "victory": null
+  }
+}
