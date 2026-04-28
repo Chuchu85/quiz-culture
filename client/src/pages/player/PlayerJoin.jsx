@@ -6,12 +6,13 @@ import FaucheLogo from '../../components/FaucheLogo.jsx'
 
 export default function PlayerJoin() {
   const navigate = useNavigate()
-  const { socket } = useSocket()
+  const { socket, connected } = useSocket()
   const [teamName, setTeamName] = useState('')
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const [clientLogo, setClientLogo] = useState(null)
   const [quizLogo, setQuizLogo] = useState(null)
+  const joinTimeoutRef = useRef(null)
 
   useEffect(() => {
     fetch('/api/room').then(r => r.json()).then(d => {
@@ -30,16 +31,20 @@ export default function PlayerJoin() {
 
   useEffect(() => {
     const onJoined = ({ teamName: name }) => {
+      console.log('[PlayerJoin] player:joined reçu :', name)
+      clearTimeout(joinTimeoutRef.current)
       if (pendingPhotoRef.current) {
         socket.emit('player:photo', { photo: pendingPhotoRef.current })
       }
       navigate('/play', { state: { teamName: name, photo: pendingPhotoRef.current } })
     }
     const onError = ({ message }) => {
+      clearTimeout(joinTimeoutRef.current)
       setLoading(false)
       setError(message)
     }
     const onDisconnect = () => {
+      clearTimeout(joinTimeoutRef.current)
       setLoading(false)
       setError('Connexion perdue, réessaie.')
     }
@@ -47,6 +52,7 @@ export default function PlayerJoin() {
     socket.on('player:error', onError)
     socket.on('disconnect', onDisconnect)
     return () => {
+      clearTimeout(joinTimeoutRef.current)
       socket.off('player:joined', onJoined)
       socket.off('player:error', onError)
       socket.off('disconnect', onDisconnect)
@@ -108,9 +114,16 @@ export default function PlayerJoin() {
     e.preventDefault()
     const trimName = teamName.trim()
     if (!trimName) return setError("Entre un nom d'équipe !")
+    if (!connected) return setError('Pas de connexion au serveur — réessaie dans quelques secondes.')
     setLoading(true)
     setError(null)
+    console.log('[PlayerJoin] Envoi player:join, socket.id =', socket.id, 'connecté =', connected)
     socket.emit('player:join', { teamName: trimName })
+    joinTimeoutRef.current = setTimeout(() => {
+      setLoading(false)
+      setError('Le serveur ne répond pas — vérifie ta connexion et réessaie.')
+      console.log('[PlayerJoin] Timeout : pas de réponse du serveur')
+    }, 8000)
   }
 
   return (
