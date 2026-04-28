@@ -29,20 +29,27 @@ export default function PlayerJoin() {
   const pendingPhotoRef = useRef(null)
 
   useEffect(() => {
-    socket.on('player:joined', ({ teamName: name }) => {
-      // Send photo before navigating
+    const onJoined = ({ teamName: name }) => {
       if (pendingPhotoRef.current) {
         socket.emit('player:photo', { photo: pendingPhotoRef.current })
       }
       navigate('/play', { state: { teamName: name, photo: pendingPhotoRef.current } })
-    })
-    socket.on('player:error', ({ message }) => {
+    }
+    const onError = ({ message }) => {
       setLoading(false)
       setError(message)
-    })
+    }
+    const onDisconnect = () => {
+      setLoading(false)
+      setError('Connexion perdue, réessaie.')
+    }
+    socket.on('player:joined', onJoined)
+    socket.on('player:error', onError)
+    socket.on('disconnect', onDisconnect)
     return () => {
-      socket.off('player:joined')
-      socket.off('player:error')
+      socket.off('player:joined', onJoined)
+      socket.off('player:error', onError)
+      socket.off('disconnect', onDisconnect)
       stopCamera()
     }
   }, [socket, navigate])

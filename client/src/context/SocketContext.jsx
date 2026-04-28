@@ -10,7 +10,10 @@ export function SocketProvider({ children }) {
   const [connected, setConnected] = useState(false)
 
   if (!socketRef.current) {
-    socketRef.current = io(SERVER_URL, { autoConnect: true })
+    socketRef.current = io(SERVER_URL, {
+      autoConnect: true,
+      transports: ['websocket', 'polling'],
+    })
   }
 
   useEffect(() => {
