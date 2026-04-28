@@ -3,14 +3,12 @@ import { io } from 'socket.io-client'
 
 const SocketContext = createContext(null)
 
-const SERVER_URL = import.meta.env.VITE_SERVER_URL || ''
-
 export function SocketProvider({ children }) {
   const socketRef = useRef(null)
   const [connected, setConnected] = useState(false)
 
   if (!socketRef.current) {
-    socketRef.current = io(SERVER_URL, {
+    socketRef.current = io({
       autoConnect: true,
       transports: ['websocket', 'polling'],
     })
