@@ -1,0 +1,14 @@
+{
+  "hostPassword": "animateur",
+  "backofficePassword": "admin2024",
+  "gameCode": "QUIZ01",
+  "quizId": "quiz_mashup",
+  "defaultDuration": 40,
+  "logo": null,
+  "clientLogo": null,
+  "activeQuizId": "quiz_mashup",
+  "activeThemeId": "theme_foot",
+  "randomizeQuestions": false,
+  "customJoinUrl": null,
+  "qrCodeImageUrl": null
+}
