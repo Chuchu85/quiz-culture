@@ -86,13 +86,22 @@ export default function HostGame() {
   const { refreshTheme } = useTheme()
   const [state, setState] = useState(null)
   const [timer, setTimer] = useState(null)
+  const [logo, setLogo] = useState(null)
 
   useEffect(() => { refreshTheme() }, [])
+
+  useEffect(() => {
+    fetch('/api/room').then(r => r.json()).then(d => setLogo(d.logo)).catch(() => {})
+  }, [])
 
   useEffect(() => {
     socket.on('game:state', (s) => setState(s))
     socket.on('game:timer', (t) => setTimer(t))
     socket.on('error', ({ message }) => alert(message))
+    socket.on('room:updated', () => {
+      fetch('/api/room').then(r => r.json()).then(d => setLogo(d.logo)).catch(() => {})
+      refreshTheme()
+    })
     function onReconnect() {
       const pwd = sessionStorage.getItem('host_pwd')
       if (pwd) socket.emit('host:connect', { password: pwd })
@@ -100,7 +109,8 @@ export default function HostGame() {
     socket.on('connect', onReconnect)
     return () => {
       socket.off('game:state'); socket.off('game:timer')
-      socket.off('error'); socket.off('connect', onReconnect)
+      socket.off('error'); socket.off('room:updated')
+      socket.off('connect', onReconnect)
     }
   }, [socket])
 
@@ -130,7 +140,7 @@ export default function HostGame() {
   if (status === 'lobby') {
     return (
       <div style={pageStyle} className="flex flex-col items-center justify-center px-8 gap-6">
-        <img src="/logo.png" alt="Culture Mashup Quiz" className="h-20 object-contain" />
+        <img src={logo ?? '/logo.png'} alt="Culture Mashup Quiz" className="h-20 object-contain" />
         <HCard style={{ padding: 32, textAlign: 'center', width: '100%', maxWidth: 420 }}>
           <p style={{ color: H.muted }} className="font-body mb-2">Équipes connectées</p>
           <p className="font-display text-6xl" style={{ color: H.green }}>{players?.length ?? 0}</p>
@@ -166,7 +176,7 @@ export default function HostGame() {
         <HCard style={{ padding: '10px 20px' }}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src="/logo.png" alt="" style={{ height: 32, objectFit: 'contain' }} />
+              <img src={logo ?? '/logo.png'} alt="" style={{ height: 32, objectFit: 'contain' }} />
               <span className="font-display text-base" style={{ color: H.muted }}>
                 Animateur · <span style={{ color: H.blue }}>{code}</span>
               </span>
@@ -211,6 +221,33 @@ export default function HostGame() {
                     <p className="font-display text-lg" style={{ color: H.text }}>{currentStep.question}</p>
                   </div>
                 )}
+
+                {/* Bonne réponse — toujours visible pour l'animateur */}
+                {(currentStep.correctAnswer || currentStep.acceptedAnswers?.length > 0) && (
+                  <div className="mb-3 rounded-xl px-4 py-3 flex items-start gap-3"
+                    style={{ background: H.greenBg, border: `2px solid ${H.greenBd}` }}>
+                    <span className="text-lg flex-shrink-0">✅</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-display text-xs uppercase tracking-wider mb-0.5" style={{ color: H.green }}>
+                        Bonne réponse
+                      </p>
+                      <p className="font-display text-base leading-snug" style={{ color: H.text }}>
+                        {currentStep.correctAnswer ?? currentStep.acceptedAnswers?.[0] ?? '—'}
+                      </p>
+                      {currentStep.acceptedAnswers?.length > 1 && (
+                        <p className="font-body text-xs mt-0.5" style={{ color: H.muted }}>
+                          Aussi accepté : {currentStep.acceptedAnswers.slice(1).join(', ')}
+                        </p>
+                      )}
+                      {currentStep.explanation && (
+                        <p className="font-body text-xs mt-1" style={{ color: H.muted }}>
+                          💡 {currentStep.explanation}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
+
                 <div className="flex items-center justify-between mb-3">
                   {answersCount && (
                     <span className="font-body text-sm" style={{ color: H.green }}>

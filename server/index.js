@@ -716,6 +716,7 @@ app.post('/api/backoffice/quizzes', (req, res) => {
 app.put('/api/backoffice/quizzes/:id', (req, res) => {
   const quiz = { ...req.body, id: req.params.id }
   saveQuiz(quiz)
+  io.emit('room:updated')
   res.json({ ok: true, quiz })
 })
 
@@ -765,6 +766,7 @@ app.post('/api/backoffice/themes', (req, res) => {
 app.put('/api/backoffice/themes/:id', (req, res) => {
   const theme = { ...req.body, id: req.params.id }
   saveTheme(theme)
+  io.emit('room:updated')
   res.json({ ok: true })
 })
 
@@ -781,6 +783,7 @@ app.post('/api/backoffice/themes/activate', (req, res) => {
   const cfg = loadConfig()
   cfg.activeThemeId = id
   saveConfig(cfg)
+  io.emit('room:updated')
   res.json({ ok: true })
 })
 
@@ -867,6 +870,7 @@ app.post('/api/backoffice/quizzes/:id/visual/logo', (req, res) => {
     const url = `/uploads/logos/${req.file.filename}`
     const quiz = loadQuiz(req.params.id)
     if (quiz) { quiz.visual = { ...(quiz.visual || {}), logoUrl: url }; saveQuiz(quiz) }
+    io.emit('room:updated')
     res.json({ ok: true, url })
   })
 })
@@ -878,6 +882,7 @@ app.post('/api/backoffice/quizzes/:id/visual/client-logo', (req, res) => {
     const url = `/uploads/logos/${req.file.filename}`
     const quiz = loadQuiz(req.params.id)
     if (quiz) { quiz.visual = { ...(quiz.visual || {}), clientLogoUrl: url }; saveQuiz(quiz) }
+    io.emit('room:updated')
     res.json({ ok: true, url })
   })
 })
@@ -889,6 +894,7 @@ app.post('/api/backoffice/quizzes/:id/visual/background', (req, res) => {
     const url = `/uploads/themes/${req.file.filename}`
     const quiz = loadQuiz(req.params.id)
     if (quiz) { quiz.visual = { ...(quiz.visual || {}), backgroundUrl: url }; saveQuiz(quiz) }
+    io.emit('room:updated')
     res.json({ ok: true, url })
   })
 })
@@ -917,6 +923,7 @@ app.post('/api/backoffice/quizzes/:id/visual/sounds/:event', (req, res) => {
     quiz.visual.sounds = quiz.visual.sounds || {}
     quiz.visual.sounds[req.params.event] = url
     saveQuiz(quiz)
+    io.emit('room:updated')
     res.json({ ok: true, event: req.params.event, url })
   })
 })
@@ -927,6 +934,7 @@ app.delete('/api/backoffice/quizzes/:id/visual/sounds/:event', (req, res) => {
   if (!quiz) return res.status(404).json({ error: 'Quiz introuvable' })
   if (quiz.visual?.sounds) quiz.visual.sounds[req.params.event] = null
   saveQuiz(quiz)
+  io.emit('room:updated')
   res.json({ ok: true })
 })
 
@@ -944,6 +952,7 @@ app.post('/api/backoffice/logo', upload.single('logo'), (req, res) => {
   const cfg = loadConfig()
   cfg.logo = `/uploads/logos/${req.file.filename}`
   saveConfig(cfg)
+  io.emit('room:updated')
   res.json({ ok: true, logo: cfg.logo })
 })
 
@@ -956,6 +965,7 @@ app.post('/api/backoffice/client-logo', uploadClient.single('logo'), (req, res) 
   const cfg = loadConfig()
   cfg.clientLogo = `/uploads/logos/${req.file.filename}`
   saveConfig(cfg)
+  io.emit('room:updated')
   res.json({ ok: true, clientLogo: cfg.clientLogo })
 })
 

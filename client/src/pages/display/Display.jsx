@@ -157,14 +157,16 @@ export default function Display() {
   // Refresh theme when display loads so per-quiz sounds/visuals are applied
   useEffect(() => { refreshTheme() }, [])
 
-  useEffect(() => {
+  useEffect(() => { fetchRoom() }, [state?.status])
+
+  function fetchRoom() {
     fetch('/api/room').then(r => r.json()).then(d => {
       setLogo(d.logo)
       setClientLogo(d.clientLogo)
       setCustomJoinUrl(d.customJoinUrl || null)
       setQrCodeImageUrl(d.qrCodeImageUrl || null)
     }).catch(() => {})
-  }, [state?.status])
+  }
 
   useEffect(() => {
     socket.emit('display:join')
@@ -189,12 +191,17 @@ export default function Display() {
       clearTimeout(transitionRef.current)
       transitionRef.current = setTimeout(() => setTransition(null), 1500)
     })
+    socket.on('room:updated', () => {
+      fetchRoom()
+      refreshTheme()
+    })
     return () => {
       socket.off('display:joined')
       socket.off('game:state')
       socket.off('game:timer')
       socket.off('game:countdown')
       socket.off('game:transition')
+      socket.off('room:updated')
     }
   }, [socket])
 
@@ -207,12 +214,21 @@ export default function Display() {
 
     if (status === 'idle' || status === 'lobby') {
       playLoop('lobby')
-    } else if (status === 'question_active') {
+    } else if (status === 'video_playing' || status === 'video_replay') {
+      // Stop all music so the video audio is audible
       stopLoop()
-      playOnce('questionStart')
-      // Start countdown loop after the jingle (give ~2 s head start)
-      const t = setTimeout(() => playLoop('countdown'), 2000)
-      return () => clearTimeout(t)
+    } else if (status === 'question_active') {
+      const gm = state?.gameMode || state?.step?.gameMode || state?.question?.gameMode || 'classic_qcm'
+      const isAudioVideo = gm === 'blind_test' || gm === 'oeil_de_lynx'
+      stopLoop()
+      if (isAudioVideo) {
+        // Don't play jingle or countdown loop — the audio/video IS the content
+      } else {
+        playOnce('questionStart')
+        // Start countdown loop after the jingle (give ~2 s head start)
+        const t = setTimeout(() => playLoop('countdown'), 2000)
+        return () => clearTimeout(t)
+      }
     } else if (status === 'question_closed') {
       stopLoop()
     } else if (status === 'answer_revealed') {
