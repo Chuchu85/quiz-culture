@@ -808,6 +808,7 @@ app.post('/api/backoffice/themes/:id/background', (req, res, next) => {
     if (!theme) return res.status(404).json({ error: 'Thème introuvable' })
     theme.backgroundImage = url
     saveTheme(theme)
+    io.emit('room:updated')
     res.json({ ok: true, backgroundImage: url })
   })
 })
@@ -837,6 +838,7 @@ app.post('/api/backoffice/themes/:id/sounds/:event', (req, res) => {
     if (!theme.sounds) theme.sounds = {}
     theme.sounds[req.params.event] = url
     saveTheme(theme)
+    io.emit('room:updated')
     res.json({ ok: true, event: req.params.event, url })
   })
 })
@@ -847,6 +849,7 @@ app.delete('/api/backoffice/themes/:id/sounds/:event', (req, res) => {
   if (!theme) return res.status(404).json({ error: 'Thème introuvable' })
   if (theme.sounds) theme.sounds[req.params.event] = null
   saveTheme(theme)
+  io.emit('room:updated')
   res.json({ ok: true })
 })
 

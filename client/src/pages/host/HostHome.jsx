@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSocket } from '../../context/SocketContext.jsx'
+import { useTheme } from '../../context/ThemeContext.jsx'
 import Background from '../../components/Background.jsx'
 
 export default function HostHome() {
   const navigate = useNavigate()
   const { socket } = useSocket()
+  const { refreshTheme } = useTheme()
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -13,6 +15,7 @@ export default function HostHome() {
 
   useEffect(() => {
     fetch('/api/room').then(r => r.json()).then(setInfo).catch(() => {})
+    refreshTheme()
   }, [])
 
   useEffect(() => {
@@ -24,9 +27,11 @@ export default function HostHome() {
       setLoading(false)
       setError(message)
     })
+    socket.on('room:updated', () => refreshTheme())
     return () => {
       socket.off('host:connected')
       socket.off('host:error')
+      socket.off('room:updated')
     }
   }, [socket, navigate])
 
