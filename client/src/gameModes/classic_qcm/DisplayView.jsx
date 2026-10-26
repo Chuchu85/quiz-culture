@@ -26,12 +26,12 @@ export default function ClassicQCMDisplayView({ step, state }) {
         </div>
       )}
 
-      {/* Image for qui_se_cache */}
-      {step?.image && ['qui_se_cache', 'celebrity_mix'].includes(step?.gameMode) && (
+      {/* Question image */}
+      {step?.image && (
         <div className="flex justify-center animate-pop_in">
           <div className="rounded-3xl overflow-hidden"
-            style={{ boxShadow: '0 0 60px rgba(123,47,255,0.6)', maxWidth: 480 }}>
-            <img src={step.image} alt="Qui se cache ?" style={{ width: '100%', maxHeight: 400, objectFit: 'cover' }} />
+            style={{ boxShadow: step?.gameMode === 'qui_se_cache' ? '0 0 60px rgba(123,47,255,0.6)' : '0 0 40px rgba(255,255,255,0.15)', maxWidth: 480 }}>
+            <img src={step.image} alt="" style={{ width: '100%', maxHeight: 360, objectFit: 'contain' }} />
           </div>
         </div>
       )}

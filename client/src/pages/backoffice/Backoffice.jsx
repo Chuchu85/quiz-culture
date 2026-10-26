@@ -160,15 +160,17 @@ function StepEditor({ step, onChange, onDelete, onMediaUpload, index }) {
             </div>
           )}
 
-          {/* Media: image for qui_se_cache */}
-          {step.gameMode === 'qui_se_cache' && (
+          {/* Media: image for classic_qcm and qui_se_cache */}
+          {(step.gameMode === 'classic_qcm' || step.gameMode === 'qui_se_cache') && (
             <div>
-              <p className="font-body text-white/50 text-xs mb-1">Image (célébrités mixées)</p>
+              <p className="font-body text-white/50 text-xs mb-1">
+                {step.gameMode === 'qui_se_cache' ? 'Image (célébrités mixées)' : 'Image de question (optionnel)'}
+              </p>
               {step.image && <img src={step.image} alt="" className="rounded-xl mb-2" style={{ maxHeight: 120, maxWidth: '100%', objectFit: 'cover' }} />}
               <Input label="URL image (ou uploadez)" value={step.image} onChange={v => set('image', v)} placeholder="/uploads/images/…" />
               {step.id && (
                 <button onClick={() => imageInputRef.current?.click()} className="font-body text-xs px-3 py-1.5 rounded-lg"
-                  style={{ background: 'rgba(123,47,255,0.2)', color: '#b07fff' }}>
+                  style={{ background: step.gameMode === 'qui_se_cache' ? 'rgba(123,47,255,0.2)' : 'rgba(255,30,232,0.2)', color: step.gameMode === 'qui_se_cache' ? '#b07fff' : '#ff8de8' }}>
                   📁 Uploader une image
                 </button>
               )}

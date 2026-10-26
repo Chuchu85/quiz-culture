@@ -19,12 +19,14 @@ export default function ClassicQCMHostView({ step, state }) {
 
   return (
     <div className="space-y-3">
-      {/* Image (qui_se_cache) */}
-      {step?.image && ['qui_se_cache', 'celebrity_mix'].includes(step?.gameMode) && (
+      {/* Question image */}
+      {step?.image && (
         <div className="flex items-center gap-3">
           <img src={step.image} alt="" className="rounded-xl"
             style={{ width: 80, height: 80, objectFit: 'cover', border: '2px solid #e2e8f0' }} />
-          <span className="text-xs font-body" style={{ color: '#94a3b8' }}>Image célébrités</span>
+          <span className="text-xs font-body" style={{ color: '#94a3b8' }}>
+            {step?.gameMode === 'qui_se_cache' ? 'Image célébrités' : 'Image de question'}
+          </span>
         </div>
       )}
 
