@@ -4,8 +4,8 @@ const COLORS = ['#ff1ee8', '#39ff14', '#ffe600', '#7b2fff']
 
 function normalizeChoices(choices) {
   if (!choices?.length) return []
-  if (typeof choices[0] === 'string') return choices.map((text) => ({ id: text, text }))
-  return choices.map(c => ({ id: c.id ?? c.text, text: c.text ?? c.id }))
+  if (typeof choices[0] === 'string') return choices.map((text) => ({ id: text, text, imageUrl: null }))
+  return choices.map(c => ({ id: c.id ?? c.text, text: c.text ?? c.id, imageUrl: c.imageUrl ?? null }))
 }
 
 export default function ClassicQCMDisplayView({ step, state }) {
@@ -13,6 +13,10 @@ export default function ClassicQCMDisplayView({ step, state }) {
   const status = state?.status
   const isTextMode = ['text_input', 'blind_test'].includes(step?.gameMode) || (!choices.length && step?.acceptedAnswers)
   const answersCount = state?.answersCount
+  const hasImageChoices = choices.some(c => c.imageUrl)
+  const correctAnswerIds = step?.correctAnswers?.length > 0
+    ? step.correctAnswers
+    : (step?.correctAnswer ? [step.correctAnswer] : [])
 
   return (
     <div className="flex flex-col gap-6">
@@ -26,7 +30,7 @@ export default function ClassicQCMDisplayView({ step, state }) {
         </div>
       )}
 
-      {/* Question image */}
+      {/* Question image (single, not per-choice) */}
       {step?.image && (
         <div className="flex justify-center animate-pop_in">
           <div className="rounded-3xl overflow-hidden"
@@ -36,7 +40,7 @@ export default function ClassicQCMDisplayView({ step, state }) {
         </div>
       )}
 
-      {/* Blind Test : indicateur visuel uniquement, pas de lecture audio (gérée côté animateur) */}
+      {/* Blind Test visual indicator */}
       {step?.audio && step?.gameMode === 'blind_test' && status === 'question_active' && (
         <div className="flex justify-center">
           <div className="rounded-2xl p-6 text-center" style={{ background: 'rgba(155,89,182,0.15)', boxShadow: '0 4px 32px rgba(155,89,182,0.25)' }}>
@@ -47,11 +51,37 @@ export default function ClassicQCMDisplayView({ step, state }) {
         </div>
       )}
 
-      {/* MCQ choices */}
-      {choices.length > 0 && (
+      {/* MCQ choices — image mode */}
+      {hasImageChoices && choices.length > 0 && (
+        <div className="grid grid-cols-2 gap-3">
+          {choices.map((c, i) => {
+            const isCorrect = status === 'answer_revealed' && (correctAnswerIds.includes(c.id) || correctAnswerIds.includes(c.text))
+            return (
+              <div key={c.id} className="rounded-2xl overflow-hidden transition-all duration-500"
+                style={{
+                  background: isCorrect ? 'rgba(57,255,20,0.2)' : `${COLORS[i]}18`,
+                  transform: isCorrect ? 'scale(1.03)' : 'none',
+                  boxShadow: isCorrect ? '0 0 30px rgba(57,255,20,0.4)' : 'none',
+                }}>
+                <img src={c.imageUrl} alt="" style={{ width: '100%', height: 180, objectFit: 'cover' }} />
+                <div className="px-3 py-2 flex items-center gap-2">
+                  <span className="font-display text-2xl" style={{ color: isCorrect ? '#39ff14' : COLORS[i] }}>
+                    {String.fromCharCode(65 + i)}
+                  </span>
+                  {c.text && <span className="font-body font-bold text-white text-base flex-1">{c.text}</span>}
+                  {isCorrect && <span className="text-xl">✓</span>}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      )}
+
+      {/* MCQ choices — text mode */}
+      {!hasImageChoices && choices.length > 0 && (
         <div className="grid grid-cols-2 gap-4">
           {choices.map((c, i) => {
-            const isCorrect = status === 'answer_revealed' && (c.id === step.correctAnswer || c.text === step.correctAnswer)
+            const isCorrect = status === 'answer_revealed' && (correctAnswerIds.includes(c.id) || correctAnswerIds.includes(c.text))
             return (
               <div key={c.id} className="rounded-2xl px-6 py-5 transition-all duration-500"
                 style={{

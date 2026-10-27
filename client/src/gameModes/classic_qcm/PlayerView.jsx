@@ -2,26 +2,40 @@ import React, { useState } from 'react'
 
 const COLORS = ['#ff1ee8', '#39ff14', '#ffe600', '#7b2fff']
 
-// Normalize choices to [{id, text}] — supports both string[] and {id,text}[]
 function normalizeChoices(choices) {
   if (!choices?.length) return []
-  if (typeof choices[0] === 'string') {
-    return choices.map((text, i) => ({ id: text, text }))
-  }
-  return choices.map(c => ({ id: c.id ?? c.text, text: c.text ?? c.id }))
+  if (typeof choices[0] === 'string') return choices.map((text, i) => ({ id: text, text, imageUrl: null }))
+  return choices.map(c => ({ id: c.id ?? c.text, text: c.text ?? c.id, imageUrl: c.imageUrl ?? null }))
 }
 
 export default function ClassicQCMPlayerView({ step, state, socket, myAnswer, hasAnswered, onAnswer }) {
   const choices = normalizeChoices(step?.choices)
   const isTextMode = ['text_input', 'blind_test'].includes(step?.gameMode) || (!choices.length && step?.acceptedAnswers)
   const [text, setText] = useState('')
+  const [selectedAnswers, setSelectedAnswers] = useState([])
 
   const status = state?.status
+  const hasImageChoices = choices.some(c => c.imageUrl)
+  const isMultiAnswer = !!step?.multipleAnswers
+  const correctAnswerIds = step?.correctAnswers?.length > 0
+    ? step.correctAnswers
+    : (step?.correctAnswer ? [step.correctAnswer] : [])
 
   function handleChoice(id) {
     if (hasAnswered) return
-    if (onAnswer) onAnswer(id)
-    else socket?.emit('player:answer', { answer: id })
+    if (isMultiAnswer) {
+      setSelectedAnswers(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id])
+    } else {
+      if (onAnswer) onAnswer(id)
+      else socket?.emit('player:answer', { answer: id })
+    }
+  }
+
+  function submitMultiAnswer() {
+    if (selectedAnswers.length === 0 || hasAnswered) return
+    const answer = JSON.stringify(selectedAnswers)
+    if (onAnswer) onAnswer(answer)
+    else socket?.emit('player:answer', { answer })
   }
 
   function handleTextSubmit(e) {
@@ -31,10 +45,14 @@ export default function ClassicQCMPlayerView({ step, state, socket, myAnswer, ha
     else socket?.emit('player:answer', { answer: text.trim() })
   }
 
-  // Reveal state
+  // ── Reveal state ──────────────────────────────────────────────────────────────
   if (status === 'answer_revealed') {
-    const correctAnswer = step?.correctAnswer ?? step?.acceptedAnswers?.[0]
+    let myAnswerArr
+    try { myAnswerArr = JSON.parse(myAnswer) } catch { myAnswerArr = myAnswer ? [myAnswer] : [] }
+    if (!Array.isArray(myAnswerArr)) myAnswerArr = [myAnswerArr]
+
     if (isTextMode) {
+      const correctAnswer = step?.correctAnswer ?? step?.acceptedAnswers?.[0]
       return (
         <div className="space-y-3 animate-pop_in">
           <div className="rounded-2xl p-4" style={{ background: 'rgba(57,255,20,0.12)' }}>
@@ -50,11 +68,38 @@ export default function ClassicQCMPlayerView({ step, state, socket, myAnswer, ha
         </div>
       )
     }
+
+    if (hasImageChoices) {
+      return (
+        <div className="grid grid-cols-2 gap-2 animate-pop_in">
+          {choices.map((c, i) => {
+            const isCorrect = correctAnswerIds.includes(c.id) || correctAnswerIds.includes(c.text)
+            const isMine = myAnswerArr.includes(c.id) || myAnswerArr.includes(c.text)
+            return (
+              <div key={c.id} className="rounded-2xl overflow-hidden"
+                style={{ boxShadow: isCorrect ? '0 0 20px rgba(57,255,20,0.5)' : isMine && !isCorrect ? '0 0 12px rgba(255,80,80,0.4)' : 'none' }}>
+                <img src={c.imageUrl} alt="" style={{ width: '100%', height: 90, objectFit: 'cover' }} />
+                <div className="px-2 py-1.5 flex items-center gap-1"
+                  style={{ background: isCorrect ? 'rgba(57,255,20,0.2)' : isMine && !isCorrect ? 'rgba(255,50,50,0.2)' : 'rgba(255,255,255,0.06)' }}>
+                  <span className="font-display text-sm" style={{ color: isCorrect ? '#39ff14' : isMine && !isCorrect ? '#ff8080' : COLORS[i] }}>
+                    {String.fromCharCode(65 + i)})
+                  </span>
+                  {c.text && <span className="font-body text-white text-xs flex-1">{c.text}</span>}
+                  {isCorrect && <span className="text-sm">✓</span>}
+                  {isMine && !isCorrect && <span className="text-sm">✗</span>}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      )
+    }
+
     return (
       <div className="space-y-3 animate-pop_in">
         {choices.map((c, i) => {
-          const isCorrect = c.id === correctAnswer || c.text === correctAnswer
-          const isMine = c.id === myAnswer || c.text === myAnswer
+          const isCorrect = correctAnswerIds.includes(c.id) || correctAnswerIds.includes(c.text)
+          const isMine = myAnswerArr.includes(c.id) || myAnswerArr.includes(c.text)
           return (
             <div key={c.id} className="w-full rounded-2xl px-5 py-4 font-body text-base transition-all"
               style={{
@@ -71,10 +116,7 @@ export default function ClassicQCMPlayerView({ step, state, socket, myAnswer, ha
     )
   }
 
-  // Question image (qui_se_cache)
-  const showImage = step?.image && ['qui_se_cache', 'celebrity_mix'].includes(step?.gameMode)
-
-  // Text input mode
+  // ── Text input mode ───────────────────────────────────────────────────────────
   if (isTextMode && !hasAnswered) {
     return (
       <div className="space-y-4">
@@ -102,27 +144,77 @@ export default function ClassicQCMPlayerView({ step, state, socket, myAnswer, ha
     )
   }
 
-  // MCQ choices
+  // ── MCQ choices ───────────────────────────────────────────────────────────────
   if (!hasAnswered) {
     return (
       <div className="space-y-3">
-        {showImage && (
-          <div className="flex justify-center mb-4 animate-pop_in">
-            <div className="rounded-2xl overflow-hidden" style={{ boxShadow: '0 0 30px rgba(123,47,255,0.4)' }}>
-              <img src={step.image} alt="" style={{ width: 200, height: 200, objectFit: 'cover' }} />
+        {hasImageChoices ? (
+          <>
+            <div className="grid grid-cols-2 gap-2">
+              {choices.map((c, i) => {
+                const isSelected = isMultiAnswer && selectedAnswers.includes(c.id)
+                return (
+                  <button key={c.id} onClick={() => handleChoice(c.id)}
+                    className="rounded-2xl overflow-hidden transition-all active:scale-95"
+                    style={{
+                      outline: isSelected ? `2px solid ${COLORS[i]}` : 'none',
+                      outlineOffset: 2,
+                    }}>
+                    <img src={c.imageUrl} alt="" style={{ width: '100%', height: 110, objectFit: 'cover' }} />
+                    <div className="px-2 py-1.5 flex items-center gap-1"
+                      style={{ background: isSelected ? `${COLORS[i]}30` : 'rgba(255,255,255,0.07)' }}>
+                      <span className="font-display text-sm" style={{ color: COLORS[i] }}>{String.fromCharCode(65 + i)})</span>
+                      {c.text && <span className="font-body text-white text-xs flex-1 text-left">{c.text}</span>}
+                      {isSelected && <span className="text-sm">✓</span>}
+                    </div>
+                  </button>
+                )
+              })}
             </div>
-          </div>
+            {isMultiAnswer && (
+              <button onClick={submitMultiAnswer} disabled={selectedAnswers.length === 0}
+                className="w-full rounded-2xl px-5 py-4 font-display text-base transition-all active:scale-95"
+                style={{
+                  background: selectedAnswers.length > 0 ? '#39ff14' : 'rgba(255,255,255,0.1)',
+                  color: selectedAnswers.length > 0 ? '#000' : 'rgba(255,255,255,0.3)',
+                }}>
+                Valider ({selectedAnswers.length} sélectionné{selectedAnswers.length > 1 ? 's' : ''})
+              </button>
+            )}
+          </>
+        ) : (
+          <>
+            {choices.map((c, i) => {
+              const isSelected = isMultiAnswer && selectedAnswers.includes(c.id)
+              return (
+                <button key={c.id} onClick={() => handleChoice(c.id)}
+                  className="w-full rounded-2xl px-5 py-4 font-body text-left text-base font-semibold transition-all active:scale-95"
+                  style={{
+                    background: isSelected ? `${COLORS[i]}35` : `${COLORS[i]}18`,
+                    color: 'white',
+                    outline: isSelected ? `2px solid ${COLORS[i]}` : 'none',
+                    outlineOffset: 2,
+                  }}>
+                  <span className="font-display mr-3" style={{ color: COLORS[i] }}>
+                    {String.fromCharCode(65 + i)})
+                  </span>
+                  {c.text}
+                  {isSelected && <span className="ml-2">✓</span>}
+                </button>
+              )
+            })}
+            {isMultiAnswer && (
+              <button onClick={submitMultiAnswer} disabled={selectedAnswers.length === 0}
+                className="w-full rounded-2xl px-5 py-4 font-display text-base transition-all active:scale-95"
+                style={{
+                  background: selectedAnswers.length > 0 ? '#39ff14' : 'rgba(255,255,255,0.1)',
+                  color: selectedAnswers.length > 0 ? '#000' : 'rgba(255,255,255,0.3)',
+                }}>
+                Valider ({selectedAnswers.length} sélectionné{selectedAnswers.length > 1 ? 's' : ''})
+              </button>
+            )}
+          </>
         )}
-        {choices.map((c, i) => (
-          <button key={c.id} onClick={() => handleChoice(c.id)}
-            className="w-full rounded-2xl px-5 py-4 font-body text-left text-base font-semibold transition-all active:scale-95"
-            style={{ background: `${COLORS[i]}18`, color: 'white' }}>
-            <span className="font-display mr-3" style={{ color: COLORS[i] }}>
-              {String.fromCharCode(65 + i)})
-            </span>
-            {c.text}
-          </button>
-        ))}
       </div>
     )
   }

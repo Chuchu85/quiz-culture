@@ -9,13 +9,17 @@ const CHOICE_COLORS = [
 
 function normalizeChoices(choices) {
   if (!choices?.length) return []
-  if (typeof choices[0] === 'string') return choices.map((text) => ({ id: text, text }))
-  return choices.map(c => ({ id: c.id ?? c.text, text: c.text ?? c.id }))
+  if (typeof choices[0] === 'string') return choices.map((text) => ({ id: text, text, imageUrl: null }))
+  return choices.map(c => ({ id: c.id ?? c.text, text: c.text ?? c.id, imageUrl: c.imageUrl ?? null }))
 }
 
 export default function ClassicQCMHostView({ step, state }) {
   const choices = normalizeChoices(step?.choices)
   const status = state?.status
+  const hasImageChoices = choices.some(c => c.imageUrl)
+  const correctAnswerIds = step?.correctAnswers?.length > 0
+    ? step.correctAnswers
+    : (step?.correctAnswer ? [step.correctAnswer] : [])
 
   return (
     <div className="space-y-3">
@@ -60,14 +64,31 @@ export default function ClassicQCMHostView({ step, state }) {
         </div>
       )}
 
-      {choices.length > 0 && (
+      {choices.length > 0 && hasImageChoices && (
         <div className="grid grid-cols-2 gap-2">
           {choices.map((c, i) => {
-            // Pour l'animateur : montrer la bonne réponse dès que la question est lancée
-            const isCorrect = c.id === step?.correctAnswer || c.text === step?.correctAnswer
-            const col = isCorrect
-              ? { bg: '#f0fdf4', border: '#16a34a', text: '#16a34a' }
-              : CHOICE_COLORS[i % CHOICE_COLORS.length]
+            const isCorrect = correctAnswerIds.includes(c.id) || correctAnswerIds.includes(c.text)
+            const col = isCorrect ? { bg: '#f0fdf4', border: '#16a34a', text: '#16a34a' } : CHOICE_COLORS[i % CHOICE_COLORS.length]
+            return (
+              <div key={c.id} className="rounded-xl overflow-hidden"
+                style={{ border: `1.5px solid ${col.border}` }}>
+                <img src={c.imageUrl} alt="" style={{ width: '100%', height: 60, objectFit: 'cover' }} />
+                <div className="px-2 py-1 flex items-center gap-1" style={{ background: col.bg }}>
+                  <span className="font-display text-xs" style={{ color: col.text }}>{String.fromCharCode(65 + i)})</span>
+                  {c.text && <span className="font-body text-xs text-slate-700 flex-1">{c.text}</span>}
+                  {isCorrect && <span>✅</span>}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      )}
+
+      {choices.length > 0 && !hasImageChoices && (
+        <div className="grid grid-cols-2 gap-2">
+          {choices.map((c, i) => {
+            const isCorrect = correctAnswerIds.includes(c.id) || correctAnswerIds.includes(c.text)
+            const col = isCorrect ? { bg: '#f0fdf4', border: '#16a34a', text: '#16a34a' } : CHOICE_COLORS[i % CHOICE_COLORS.length]
             return (
               <div key={c.id} className="rounded-xl px-3 py-2 font-body text-sm"
                 style={{ background: col.bg, border: `1.5px solid ${col.border}`, color: '#1e293b',

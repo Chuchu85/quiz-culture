@@ -55,15 +55,45 @@ function StepEditor({ step, onChange, onDelete, onMediaUpload, index }) {
   // Normalise choices to string[] for easier editing
   const rawChoices = step.choices ?? []
   const choices = rawChoices.map(c => typeof c === 'string' ? c : (c.text ?? ''))
+  const choiceImages = rawChoices.map(c => typeof c === 'string' ? null : (c.imageUrl ?? null))
 
   function setChoice(i, val) {
-    const next = [...choices]; next[i] = val; set('choices', next)
+    const next = rawChoices.map((c, ci) => {
+      if (ci !== i) return c
+      if (typeof c === 'object' && c !== null) return { ...c, text: val }
+      return val
+    })
+    set('choices', next)
   }
-  function addChoice() { set('choices', [...choices, '']) }
-  function removeChoice(i) { set('choices', choices.filter((_, ci) => ci !== i)) }
+  function setChoiceImage(i, url) {
+    const next = rawChoices.map((c, ci) => {
+      if (ci !== i) return c
+      const text = typeof c === 'string' ? c : (c.text ?? '')
+      const id = (typeof c === 'object' && c?.id) ? c.id : (text || `choice_${ci}`)
+      if (url === null) return text  // remove image → back to string
+      return { id, text, imageUrl: url }
+    })
+    set('choices', next)
+  }
+  function addChoice() { set('choices', [...rawChoices, '']) }
+  function removeChoice(i) { set('choices', rawChoices.filter((_, ci) => ci !== i)) }
+  function toggleCorrect(ci) {
+    const c = choices[ci]
+    const raw = rawChoices[ci]
+    const id = (typeof raw === 'object' && raw?.id) ? raw.id : (c || `choice_${ci}`)
+    if (step.multipleAnswers) {
+      const current = step.correctAnswers ?? []
+      const has = current.some(x => x === id || x === c)
+      set('correctAnswers', has ? current.filter(x => x !== id && x !== c) : [...current, id])
+    } else {
+      set('correctAnswer', c)
+    }
+  }
 
   const hasChoices = ['classic_qcm','top_reponse','qui_se_cache','recherche_interdite','oeil_de_lynx','blind_test'].includes(step.gameMode)
   const CHOICE_COLORS = ['#ff1ee8','#39ff14','#ffe600','#7b2fff']
+  const [pendingChoiceIdx, setPendingChoiceIdx] = useState(null)
+  const choiceImageRef = useRef()
 
   return (
     <div className="rounded-2xl mb-2 overflow-hidden" style={{ background: 'rgba(255,255,255,0.03)' }}>
@@ -104,26 +134,63 @@ function StepEditor({ step, onChange, onDelete, onMediaUpload, index }) {
             <div>
               <div className="flex items-center justify-between mb-2">
                 <p className="font-body text-white/50 text-xs">Choix de réponses</p>
-                <button onClick={addChoice} className="font-body text-xs px-2.5 py-1 rounded-lg" style={{ background: 'rgba(57,255,20,0.12)', color: '#39ff14' }}>+ Ajouter</button>
+                <div className="flex items-center gap-2">
+                  {step.gameMode === 'classic_qcm' && (
+                    <button onClick={() => set('multipleAnswers', !step.multipleAnswers)}
+                      className="font-body text-xs px-2 py-1 rounded-full transition-all"
+                      style={{ background: step.multipleAnswers ? 'rgba(57,255,20,0.15)' : 'rgba(255,255,255,0.07)', color: step.multipleAnswers ? '#39ff14' : 'rgba(255,255,255,0.35)' }}>
+                      ☑ Multi-réponses
+                    </button>
+                  )}
+                  <button onClick={addChoice} className="font-body text-xs px-2.5 py-1 rounded-lg" style={{ background: 'rgba(57,255,20,0.12)', color: '#39ff14' }}>+ Ajouter</button>
+                </div>
               </div>
-              {choices.map((c, ci) => {
-                const isCorrect = step.correctAnswer === c && c !== ''
+              {rawChoices.map((raw, ci) => {
+                const c = choices[ci] ?? ''
+                const img = choiceImages[ci]
+                const rawId = (typeof raw === 'object' && raw?.id) ? raw.id : (c || `choice_${ci}`)
+                const isCorrect = step.multipleAnswers
+                  ? (step.correctAnswers ?? []).some(x => x === rawId || x === c)
+                  : step.correctAnswer === c && c !== ''
                 return (
-                  <div key={ci} className="flex items-center gap-2 mb-1.5">
-                    <span className="font-display text-xs w-5 text-center flex-shrink-0" style={{ color: CHOICE_COLORS[ci % 4] }}>{String.fromCharCode(65 + ci)})</span>
-                    <input value={c} onChange={e => setChoice(ci, e.target.value)}
-                      className="flex-1 rounded-xl px-3 py-2 font-body text-white text-sm focus:outline-none"
-                      style={{ background: 'rgba(255,255,255,0.07)', caretColor: '#39ff14' }} />
-                    <button onClick={() => set('correctAnswer', c)} title="Bonne réponse"
-                      className="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center text-xs"
-                      style={{ background: isCorrect ? 'rgba(57,255,20,0.25)' : 'rgba(255,255,255,0.07)', color: isCorrect ? '#39ff14' : 'rgba(255,255,255,0.4)' }}>✓</button>
-                    <button onClick={() => removeChoice(ci)}
-                      className="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center text-xs"
-                      style={{ background: 'rgba(255,50,50,0.12)', color: '#ff8080' }}>✕</button>
+                  <div key={ci} className="mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="font-display text-xs w-5 text-center flex-shrink-0" style={{ color: CHOICE_COLORS[ci % 4] }}>{String.fromCharCode(65 + ci)})</span>
+                      <input value={c} onChange={e => setChoice(ci, e.target.value)}
+                        className="flex-1 rounded-xl px-3 py-2 font-body text-white text-sm focus:outline-none"
+                        style={{ background: 'rgba(255,255,255,0.07)', caretColor: '#39ff14' }} />
+                      {step.id && step.gameMode === 'classic_qcm' && (
+                        <button onClick={() => { setPendingChoiceIdx(ci); choiceImageRef.current?.click() }} title="Image pour ce choix"
+                          className="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center text-xs"
+                          style={{ background: img ? 'rgba(255,30,232,0.3)' : 'rgba(255,30,232,0.08)', color: '#ff8de8' }}>🖼</button>
+                      )}
+                      <button onClick={() => toggleCorrect(ci)} title="Bonne réponse"
+                        className="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center text-xs"
+                        style={{ background: isCorrect ? 'rgba(57,255,20,0.25)' : 'rgba(255,255,255,0.07)', color: isCorrect ? '#39ff14' : 'rgba(255,255,255,0.4)' }}>✓</button>
+                      <button onClick={() => removeChoice(ci)}
+                        className="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center text-xs"
+                        style={{ background: 'rgba(255,50,50,0.12)', color: '#ff8080' }}>✕</button>
+                    </div>
+                    {img && (
+                      <div className="flex items-center gap-2 mt-1 ml-7">
+                        <img src={img} alt="" className="rounded-lg" style={{ height: 48, width: 64, objectFit: 'cover' }} />
+                        <button onClick={() => setChoiceImage(ci, null)} className="font-body text-xs" style={{ color: '#ff8080' }}>✕ supprimer</button>
+                      </div>
+                    )}
                   </div>
                 )
               })}
-              {step.correctAnswer && <p className="font-body text-xs mt-1" style={{ color: '#39ff14' }}>✓ Bonne réponse : <strong>{step.correctAnswer}</strong></p>}
+              {!step.multipleAnswers && step.correctAnswer && <p className="font-body text-xs mt-1" style={{ color: '#39ff14' }}>✓ Bonne réponse : <strong>{step.correctAnswer}</strong></p>}
+              {step.multipleAnswers && step.correctAnswers?.length > 0 && <p className="font-body text-xs mt-1" style={{ color: '#39ff14' }}>✓ Bonnes réponses : <strong>{step.correctAnswers.join(', ')}</strong></p>}
+              <input ref={choiceImageRef} type="file" accept="image/*" className="hidden"
+                onChange={e => {
+                  const file = e.target.files[0]
+                  if (file && pendingChoiceIdx !== null) {
+                    onMediaUpload && onMediaUpload('choice-image', step.id, file, url => setChoiceImage(pendingChoiceIdx, url), pendingChoiceIdx)
+                  }
+                  e.target.value = ''
+                  setPendingChoiceIdx(null)
+                }} />
             </div>
           )}
 
@@ -1514,17 +1581,18 @@ export default function Backoffice() {
   }
 
   // ── Media upload from builder ──────────────────────────────────────────────
-  async function handleMediaUpload(type, stepId, file, onSuccess) {
+  async function handleMediaUpload(type, stepId, file, onSuccess, extraParam) {
     if (!file || !stepId) return
     const fd = new FormData(); fd.append('file', file)
     const endpoint = type === 'audio' ? `/api/backoffice/media/audio/${stepId}`
       : type === 'image' ? `/api/backoffice/media/image/${stepId}`
+      : type === 'choice-image' ? `/api/backoffice/media/choice-image/${stepId}/${extraParam}`
       : `/api/backoffice/media/video/${stepId}`
     try {
       const res = await fetch(endpoint, { method: 'POST', body: fd })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error)
-      const url = data.audio || data.image || data.videoUrl
+      const url = data.audio || data.image || data.videoUrl || data.imageUrl
       onSuccess(url)
       showToast('Fichier uploadé ✓')
     } catch (e) { showToast(e.message || 'Erreur upload', 'error') }

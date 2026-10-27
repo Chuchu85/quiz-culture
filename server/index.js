@@ -279,10 +279,11 @@ function getCurrentStep() { return room.steps[room.stepIndex] ?? null }
 function safeStepFor(status) {
   const s = getCurrentStep()
   if (!s) return null
-  const { correctAnswer, acceptedAnswers, ...safe } = s
+  const { correctAnswer, acceptedAnswers, correctAnswers, ...safe } = s
   if (status === 'answer_revealed') {
-    return { ...safe, correctAnswer: s.correctAnswer ?? s.acceptedAnswers?.[0] ?? null, acceptedAnswers: s.acceptedAnswers ?? [] }
+    return { ...safe, correctAnswer: s.correctAnswer ?? s.acceptedAnswers?.[0] ?? null, acceptedAnswers: s.acceptedAnswers ?? [], correctAnswers: s.correctAnswers ?? [] }
   }
+  // multipleAnswers must reach players (they need it to show multi-select UI)
   return safe
 }
 
@@ -341,7 +342,7 @@ function buildHostState(overrideStatus) {
   const status = overrideStatus ?? room.status
   const rawStep = getCurrentStep()
   const hostStep = rawStep
-    ? { ...safeStepFor(status), correctAnswer: rawStep.correctAnswer ?? rawStep.acceptedAnswers?.[0] ?? null, acceptedAnswers: rawStep.acceptedAnswers ?? [] }
+    ? { ...safeStepFor(status), correctAnswer: rawStep.correctAnswer ?? rawStep.acceptedAnswers?.[0] ?? null, acceptedAnswers: rawStep.acceptedAnswers ?? [], correctAnswers: rawStep.correctAnswers ?? [] }
     : null
   return { ...fullState, step: hostStep, question: hostStep }
 }
@@ -431,6 +432,16 @@ function calcScores() {
   const isCorrect = (answer) => {
     if (!answer) return false
     const normAnswer = normalizeText(answer)
+
+    // Multi-answer MCQ: answer is a JSON array
+    if (step.multipleAnswers && step.correctAnswers?.length) {
+      let answers
+      try { answers = JSON.parse(answer) } catch { answers = [answer] }
+      if (!Array.isArray(answers)) answers = [answers]
+      const normAnswers = answers.map(normalizeText).sort()
+      const normCorrect = step.correctAnswers.map(normalizeText).sort()
+      return normAnswers.length === normCorrect.length && normAnswers.every((a, idx) => a === normCorrect[idx])
+    }
 
     // MCQ-style: player answered with a choice id/text — compare normalized
     if (step.choices?.length && step.correctAnswer) {
@@ -1034,6 +1045,32 @@ app.post('/api/backoffice/media/image/:stepId', (req, res, next) => {
     const url = `/uploads/images/${req.file.filename}`
     updateStepField(req.params.stepId, 'image', url)
     res.json({ ok: true, image: url })
+  })
+})
+
+app.post('/api/backoffice/media/choice-image/:stepId/:choiceIndex', (req, res, next) => {
+  uploadImage.single('file')(req, res, err => {
+    if (err) return res.status(400).json({ error: err.message })
+    if (!req.file) return res.status(400).json({ error: 'Aucun fichier reçu' })
+    const url = `/uploads/images/${req.file.filename}`
+    const ci = parseInt(req.params.choiceIndex)
+    const cfg = loadConfig()
+    const qid = cfg.activeQuizId || cfg.quizId
+    const quiz = loadQuiz(qid)
+    if (!quiz) return res.status(404).json({ error: 'Quiz introuvable' })
+    let updated = false
+    ;(quiz.steps || []).forEach(s => {
+      if (s.id === req.params.stepId) {
+        if (!s.choices) s.choices = []
+        const existing = s.choices[ci]
+        s.choices[ci] = typeof existing === 'string'
+          ? { id: existing || `choice_${ci}`, text: existing || '', imageUrl: url }
+          : { ...(existing || { id: `choice_${ci}`, text: '' }), imageUrl: url }
+        updated = true
+      }
+    })
+    if (updated) saveQuiz(quiz)
+    res.json({ ok: true, imageUrl: url })
   })
 })
 
