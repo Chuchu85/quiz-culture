@@ -92,8 +92,7 @@ function StepEditor({ step, onChange, onDelete, onMediaUpload, index }) {
 
   const hasChoices = ['classic_qcm','top_reponse','qui_se_cache','recherche_interdite','oeil_de_lynx','blind_test'].includes(step.gameMode)
   const CHOICE_COLORS = ['#ff1ee8','#39ff14','#ffe600','#7b2fff']
-  const [pendingChoiceIdx, setPendingChoiceIdx] = useState(null)
-  const choiceImageRef = useRef()
+  const choiceImageRefs = useRef([])
 
   return (
     <div className="rounded-2xl mb-2 overflow-hidden" style={{ background: 'rgba(255,255,255,0.03)' }}>
@@ -160,9 +159,18 @@ function StepEditor({ step, onChange, onDelete, onMediaUpload, index }) {
                         className="flex-1 rounded-xl px-3 py-2 font-body text-white text-sm focus:outline-none"
                         style={{ background: 'rgba(255,255,255,0.07)', caretColor: '#39ff14' }} />
                       {step.id && step.gameMode === 'classic_qcm' && (
-                        <button onClick={() => { setPendingChoiceIdx(ci); choiceImageRef.current?.click() }} title="Image pour ce choix"
-                          className="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center text-xs"
-                          style={{ background: img ? 'rgba(255,30,232,0.3)' : 'rgba(255,30,232,0.08)', color: '#ff8de8' }}>🖼</button>
+                        <>
+                          <button onClick={() => choiceImageRefs.current[ci]?.click()} title="Image pour ce choix"
+                            className="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center text-xs"
+                            style={{ background: img ? 'rgba(255,30,232,0.3)' : 'rgba(255,30,232,0.08)', color: '#ff8de8' }}>🖼</button>
+                          <input type="file" accept="image/*" className="hidden"
+                            ref={el => { choiceImageRefs.current[ci] = el }}
+                            onChange={e => {
+                              const file = e.target.files[0]
+                              if (file) onMediaUpload && onMediaUpload('choice-image', step.id, file, url => setChoiceImage(ci, url), ci)
+                              e.target.value = ''
+                            }} />
+                        </>
                       )}
                       <button onClick={() => toggleCorrect(ci)} title="Bonne réponse"
                         className="w-7 h-7 rounded-lg flex-shrink-0 flex items-center justify-center text-xs"
@@ -182,15 +190,6 @@ function StepEditor({ step, onChange, onDelete, onMediaUpload, index }) {
               })}
               {!step.multipleAnswers && step.correctAnswer && <p className="font-body text-xs mt-1" style={{ color: '#39ff14' }}>✓ Bonne réponse : <strong>{step.correctAnswer}</strong></p>}
               {step.multipleAnswers && step.correctAnswers?.length > 0 && <p className="font-body text-xs mt-1" style={{ color: '#39ff14' }}>✓ Bonnes réponses : <strong>{step.correctAnswers.join(', ')}</strong></p>}
-              <input ref={choiceImageRef} type="file" accept="image/*" className="hidden"
-                onChange={e => {
-                  const file = e.target.files[0]
-                  if (file && pendingChoiceIdx !== null) {
-                    onMediaUpload && onMediaUpload('choice-image', step.id, file, url => setChoiceImage(pendingChoiceIdx, url), pendingChoiceIdx)
-                  }
-                  e.target.value = ''
-                  setPendingChoiceIdx(null)
-                }} />
             </div>
           )}
 
@@ -1429,6 +1428,7 @@ export default function Backoffice() {
   const [authenticated, setAuthenticated] = useState(() => sessionStorage.getItem('bo_auth') === '1')
   const [authPassword, setAuthPassword] = useState('')
   const [authError, setAuthError] = useState(null)
+  const [showPassword, setShowPassword] = useState(false)
 
   const [activeTab, setActiveTab] = useState('quizzes')
   const [loading, setLoading] = useState(false)
@@ -1732,11 +1732,19 @@ export default function Backoffice() {
           )}
           <form onSubmit={login} className="rounded-2xl p-6 flex flex-col gap-4" style={{ background: 'rgba(255,255,255,0.05)' }}>
             <label className="font-body text-white/70 text-sm">Mot de passe backoffice</label>
-            <input type="password" value={authPassword} onChange={e => { setAuthPassword(e.target.value); setAuthError(null) }}
-              placeholder="••••••••" className="w-full rounded-xl px-4 py-3 font-body text-white text-lg text-center focus:outline-none"
-              style={{ background: 'rgba(255,255,255,0.08)', letterSpacing: '0.2em', caretColor: '#ff1ee8' }}
-              onFocus={e => (e.target.style.border = '1.5px solid #ff1ee8')}
-              onBlur={e => (e.target.style.border = '1.5px solid rgba(255,255,255,0.2)')} autoFocus />
+            <div className="relative">
+              <input type={showPassword ? 'text' : 'password'} value={authPassword} onChange={e => { setAuthPassword(e.target.value); setAuthError(null) }}
+                placeholder="••••••••" className="w-full rounded-xl px-4 py-3 pr-12 font-body text-white text-lg text-center focus:outline-none"
+                style={{ background: 'rgba(255,255,255,0.08)', letterSpacing: showPassword ? 'normal' : '0.2em', caretColor: '#ff1ee8' }}
+                onFocus={e => (e.target.style.border = '1.5px solid #ff1ee8')}
+                onBlur={e => (e.target.style.border = '1.5px solid rgba(255,255,255,0.2)')} autoFocus />
+              <button type="button" onClick={() => setShowPassword(v => !v)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-lg transition-all"
+                style={{ background: 'rgba(255,255,255,0.06)', color: showPassword ? '#ff1ee8' : 'rgba(255,255,255,0.35)' }}
+                title={showPassword ? 'Masquer' : 'Afficher'}>
+                {showPassword ? '👁' : '🙈'}
+              </button>
+            </div>
             <button type="submit" className="w-full py-4 rounded-xl font-display text-lg text-white"
               style={{ background: 'linear-gradient(135deg,#ff1ee8,#a005d0)', boxShadow: '0 4px 20px rgba(255,30,232,0.4)' }}>
               Accéder
