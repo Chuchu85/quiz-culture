@@ -394,12 +394,12 @@ export default function Display() {
     return (
       <Background phase={bgPhase}>
         {TransitionOverlay}{CountdownOverlay}{SoundUnlockBtn}
-        <div className="flex flex-col min-h-screen px-8 py-6">
+        <div className="flex flex-col h-screen overflow-hidden px-8 py-6">
           <Header />
 
           {/* Answer progress bar (question_active, non-buzzer) */}
           {status === 'question_active' && gameMode !== 'buzzer' && answersCount?.total > 0 && (
-            <div className="mb-4">
+            <div className="mb-4 flex-shrink-0">
               <div className="w-full rounded-full h-3 mb-3 overflow-hidden"
                 style={{ background: 'rgba(255,255,255,0.1)' }}>
                 <div className="h-full rounded-full transition-all duration-500"
@@ -423,13 +423,13 @@ export default function Display() {
           )}
 
           {/* Mode-specific display */}
-          <div className="flex-1 flex flex-col justify-center">
+          <div className="flex-1 min-h-0 flex flex-col justify-center overflow-hidden">
             <ModeDisplayView step={currentStep} state={state} socket={socket} />
           </div>
 
           {/* Answer revealed: fastest finger + score bars */}
           {status === 'answer_revealed' && (
-            <div className="mt-6 flex gap-6 items-start">
+            <div className="mt-4 flex-shrink-0 flex gap-6 items-start">
               <div className="flex-1 rounded-2xl p-5" style={{ background: 'rgba(255,255,255,0.07)' }}>
                 <p className="font-display text-white text-lg mb-4">Scores</p>
                 <ScoreBars players={players} prevScores={prevScoresRef.current} />
