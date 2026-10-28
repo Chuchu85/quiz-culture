@@ -26,7 +26,9 @@ const celebritesDir = path.join(uploadsDir, 'celebrites') // legacy
 for (const dir of [uploadsDir, audioDir, imagesDir, videosDir, logosDir, celebritesDir]) {
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true })
 }
-app.use('/uploads', express.static(uploadsDir, { maxAge: 0 }))
+app.use('/uploads', express.static(uploadsDir, {
+  setHeaders: (res) => res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
+}))
 
 // ─── Serve React client build (production) ───────────────────────────────────
 const clientDist = path.join(__dirname, '../client/dist')
