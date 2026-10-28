@@ -32,10 +32,10 @@ export default function ClassicQCMDisplayView({ step, state }) {
 
       {/* Question image (single, not per-choice) */}
       {step?.image && (
-        <div className="flex justify-center animate-pop_in flex-1 min-h-0">
-          <div className="rounded-3xl overflow-hidden h-full"
-            style={{ boxShadow: step?.gameMode === 'qui_se_cache' ? '0 0 60px rgba(123,47,255,0.6)' : '0 0 40px rgba(255,255,255,0.15)', maxWidth: 560 }}>
-            <img src={step.image} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+        <div className="flex justify-center animate-pop_in flex-shrink-0">
+          <div className="rounded-3xl overflow-hidden"
+            style={{ boxShadow: step?.gameMode === 'qui_se_cache' ? '0 0 60px rgba(123,47,255,0.6)' : '0 0 40px rgba(255,255,255,0.15)', maxWidth: 480 }}>
+            <img src={step.image} alt="" style={{ width: '100%', maxHeight: '38vh', objectFit: 'contain' }} />
           </div>
         </div>
       )}
