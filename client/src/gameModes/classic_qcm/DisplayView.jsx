@@ -19,12 +19,12 @@ export default function ClassicQCMDisplayView({ step, state }) {
     : (step?.correctAnswer ? [step.correctAnswer] : [])
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-4 h-full">
       {/* Question text */}
       {step?.question && (
-        <div className="rounded-3xl px-8 py-6 text-center"
+        <div className="rounded-3xl px-8 py-4 text-center flex-shrink-0"
           style={{ background: 'rgba(255,255,255,0.07)', boxShadow: '0 4px 24px rgba(0,0,0,0.12)' }}>
-          <p className="font-display text-white leading-snug" style={{ fontSize: 'clamp(1.4rem, 3vw, 2.2rem)' }}>
+          <p className="font-display text-white leading-snug" style={{ fontSize: 'clamp(1.2rem, 2.5vw, 2rem)' }}>
             {step.question}
           </p>
         </div>
@@ -32,10 +32,10 @@ export default function ClassicQCMDisplayView({ step, state }) {
 
       {/* Question image (single, not per-choice) */}
       {step?.image && (
-        <div className="flex justify-center animate-pop_in">
-          <div className="rounded-3xl overflow-hidden"
-            style={{ boxShadow: step?.gameMode === 'qui_se_cache' ? '0 0 60px rgba(123,47,255,0.6)' : '0 0 40px rgba(255,255,255,0.15)', maxWidth: 480 }}>
-            <img src={step.image} alt="" style={{ width: '100%', maxHeight: 360, objectFit: 'contain' }} />
+        <div className="flex justify-center animate-pop_in flex-1 min-h-0">
+          <div className="rounded-3xl overflow-hidden h-full"
+            style={{ boxShadow: step?.gameMode === 'qui_se_cache' ? '0 0 60px rgba(123,47,255,0.6)' : '0 0 40px rgba(255,255,255,0.15)', maxWidth: 560 }}>
+            <img src={step.image} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
           </div>
         </div>
       )}
@@ -53,7 +53,7 @@ export default function ClassicQCMDisplayView({ step, state }) {
 
       {/* MCQ choices — image mode */}
       {hasImageChoices && choices.length > 0 && (
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3 flex-shrink-0">
           {choices.map((c, i) => {
             const isCorrect = status === 'answer_revealed' && (correctAnswerIds.includes(c.id) || correctAnswerIds.includes(c.text))
             return (
@@ -79,7 +79,7 @@ export default function ClassicQCMDisplayView({ step, state }) {
 
       {/* MCQ choices — text mode */}
       {!hasImageChoices && choices.length > 0 && (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 flex-shrink-0">
           {choices.map((c, i) => {
             const isCorrect = status === 'answer_revealed' && (correctAnswerIds.includes(c.id) || correctAnswerIds.includes(c.text))
             return (
