@@ -57,6 +57,10 @@ export default function PlayerGame() {
   const answeredRef = useRef(false)
   const countdownTimerRef = useRef(null)
   const transitionTimerRef = useRef(null)
+  const questionRef = useRef(null)
+
+  // Garde questionRef synchronisé sans déclencher la re-registration des listeners
+  useEffect(() => { questionRef.current = question }, [question])
 
   useEffect(() => {
     if (!teamName) { navigate('/join'); return }
@@ -70,8 +74,8 @@ export default function PlayerGame() {
 
       const newStep = s.step ?? s.question
       if (newStep) {
-        // Reset answered state when new step starts
-        const isNewStep = !question || newStep.id !== question?.id
+        // Utilise questionRef pour éviter les closures périmées
+        const isNewStep = !questionRef.current || newStep.id !== questionRef.current?.id
         const isActiveStatus = ['video_playing', 'video_replay', 'question_active', 'bluff_input', 'vote_phase', 'buzzer_ready'].includes(s.status)
         if (isActiveStatus && isNewStep) {
           setQuestion(newStep)
@@ -130,7 +134,7 @@ export default function PlayerGame() {
       socket.off('quiz:finished')
       socket.off('player:error')
     }
-  }, [socket, teamName, navigate, question])
+  }, [socket, teamName, navigate])
 
   function submitAnswer(answer) {
     if (answeredRef.current) return
