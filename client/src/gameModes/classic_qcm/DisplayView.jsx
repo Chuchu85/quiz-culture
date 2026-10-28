@@ -63,7 +63,7 @@ export default function ClassicQCMDisplayView({ step, state }) {
                   transform: isCorrect ? 'scale(1.03)' : 'none',
                   boxShadow: isCorrect ? '0 0 30px rgba(57,255,20,0.4)' : 'none',
                 }}>
-                <img src={c.imageUrl} alt="" style={{ width: '100%', height: 180, objectFit: 'cover' }} />
+                <img src={c.imageUrl} alt="" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'contain', background: 'rgba(0,0,0,0.3)' }} />
                 <div className="px-3 py-2 flex items-center gap-2">
                   <span className="font-display text-2xl" style={{ color: isCorrect ? '#39ff14' : COLORS[i] }}>
                     {String.fromCharCode(65 + i)}
