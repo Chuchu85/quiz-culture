@@ -370,12 +370,12 @@ export default function Display() {
                 <div key={p.id} className="flex flex-col items-center gap-2 animate-pop_in"
                   style={{ background: 'rgba(255,30,232,0.15)', border: '2px solid #ff1ee8', borderRadius: 20, padding: '12px 20px', minWidth: 90 }}>
                   {p.photo
-                    ? <img src={p.photo} alt="" style={{ width: 72, height: 72, borderRadius: '50%', objectFit: 'cover', border: '3px solid #ff1ee8', boxShadow: '0 0 16px rgba(255,30,232,0.5)' }} />
-                    : <div style={{ width: 72, height: 72, borderRadius: '50%', background: 'rgba(255,30,232,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem', fontWeight: 900, color: 'white' }}>
+                    ? <img src={p.photo} alt="" style={{ width: 110, height: 110, borderRadius: '50%', objectFit: 'cover', border: '3px solid #ff1ee8', boxShadow: '0 0 20px rgba(255,30,232,0.5)' }} />
+                    : <div style={{ width: 110, height: 110, borderRadius: '50%', background: 'rgba(255,30,232,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.8rem', fontWeight: 900, color: 'white' }}>
                         {p.name[0]?.toUpperCase()}
                       </div>
                   }
-                  <span className="font-display text-white text-base text-center" style={{ maxWidth: 120 }}>{p.name}</span>
+                  <span className="font-display text-white text-lg text-center" style={{ maxWidth: 140 }}>{p.name}</span>
                 </div>
               ))}
             </div>
