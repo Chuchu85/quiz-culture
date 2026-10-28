@@ -49,6 +49,9 @@ export default function ClassicQCMDisplayView({ step, state }) {
           gridTemplateColumns: '1fr 1fr',
           gridTemplateRows: choices.length > 2 ? '1fr 1fr' : '1fr',
           gap: 8,
+          /* Limite la hauteur pour garder des cellules proches du carré sur écran 16:9 */
+          maxHeight: '62vh',
+          alignSelf: 'center',
         }}>
           {choices.map((c, i) => {
             const isCorrect = status === 'answer_revealed' && (correctAnswerIds.includes(c.id) || correctAnswerIds.includes(c.text))
@@ -60,7 +63,7 @@ export default function ClassicQCMDisplayView({ step, state }) {
                   transform: isCorrect ? 'scale(1.02)' : 'none',
                   border: isCorrect ? '3px solid #39ff14' : `2px solid ${COLORS[i]}44`,
                 }}>
-                <img src={c.imageUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', background: 'rgba(0,0,0,0.4)' }} />
+                <img src={c.imageUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', objectPosition: 'center center' }} />
                 {/* Overlay letter + label */}
                 <div style={{
                   position: 'absolute', bottom: 0, left: 0, right: 0,
