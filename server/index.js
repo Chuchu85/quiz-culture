@@ -67,7 +67,8 @@ const uploadImage = multer({
     destination: imagesDir,
     filename: (req, file, cb) => {
       const id = req.params.stepId || req.params.questionId || 'unknown'
-      cb(null, `${id}${path.extname(file.originalname) || '.jpg'}`)
+      const ci = req.params.choiceIndex !== undefined ? `_choice${req.params.choiceIndex}` : ''
+      cb(null, `${id}${ci}${path.extname(file.originalname) || '.jpg'}`)
     },
   }),
   limits: { fileSize: 10 * 1024 * 1024 },
