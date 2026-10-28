@@ -1,0 +1,123 @@
+{
+  "name": "Seminaire Brandois",
+  "title": "Seminaire Brandois",
+  "id": "quiz_1793223792377",
+  "steps": [
+    {
+      "id": "step_1793223805960",
+      "gameMode": "classic_qcm",
+      "question": "Laquelle de ces photos n'est pas du matériel disponible chez location fête ?",
+      "choices": [
+        { "id": "Photo A", "text": "Photo A", "imageUrl": "/uploads/images/step_1793223805960.JPEG?v=1793223928958" },
+        { "id": "Photo B", "text": "Photo B", "imageUrl": "/uploads/images/step_1793223805960.JPEG?v=1793223939405" },
+        { "id": "Photo C", "text": "Photo C", "imageUrl": "/uploads/images/step_1793223805960.jpg?v=1793223950264" },
+        { "id": "Photo D", "text": "Photo D", "imageUrl": "/uploads/images/step_1793223805960.jpg?v=1793223961631" }
+      ],
+      "correctAnswer": "Photo D",
+      "timer": 30,
+      "points": 1,
+      "speedBonus": true,
+      "explanation": "La réponse le tuk tuk car il ne peut être loué que par Envol en livraison "
+    },
+    {
+      "id": "step_1793223983308",
+      "gameMode": "classic_qcm",
+      "question": "Dans quel DAS ? attention plusieurs choix possibles",
+      "choices": ["Location Fête", "Scéno Déco", "ENVOL L'Agence", "ENVOL Animation"],
+      "correctAnswer": "Location Fête",
+      "timer": 30,
+      "points": 1,
+      "speedBonus": true,
+      "explanation": "location fete , location possible de plusieurs équipements\nEnvol Animation  location avec montage et encadrement\nPas ENVOL l'Agence, il n'y a pas de valeur ajoutée ",
+      "image": "/uploads/images/step_1793223983308.JPEG?v=1793224137348",
+      "multipleAnswers": true,
+      "correctAnswers": ["Location Fête", "ENVOL Animation"]
+    },
+    {
+      "id": "step_1793224151583",
+      "gameMode": "classic_qcm",
+      "question": "Dans quel DAS ? (un seul choix possible)",
+      "choices": ["Häagen", "Scéno Déco", "ENVOL L'Agence", "ENVOL Animation"],
+      "correctAnswer": "Scéno Déco",
+      "timer": 30,
+      "points": 1,
+      "speedBonus": true,
+      "explanation": "La réponse est Scéno Déco car cela concerne de la fabrication décor qui seront par contre ensuite vendu et revendu par ENVOL L'Agence la fois suivante\nLa déco ballons fait partie du DAS Décor Sceno Déco",
+      "image": "/uploads/images/step_1793224151583.jpg?v=1793224537062"
+    },
+    {
+      "id": "step_1793224646334",
+      "gameMode": "classic_qcm",
+      "question": "C'est une location avec une livraison, pour 15 jours consécutifs, sans encadrement \nTout est inclus (les bouées, l'éclairage de la piste, la sono party box 300)\n",
+      "choices": ["ENVOL Animation", "ENVOL l'Agence", "Location Fête (mais il faut savoir lire les panneaux quand même)"],
+      "correctAnswer": "ENVOL Animation",
+      "timer": 30,
+      "points": 1,
+      "speedBonus": true,
+      "explanation": "ENVOL Animation , c'est un ensemble d'équipement sans personnalisation\n",
+      "image": "/uploads/images/step_1793224646334.jpg?v=1793224745137"
+    },
+    {
+      "id": "step_1793224758752",
+      "gameMode": "classic_qcm",
+      "question": "Dans le DAS Ludi Planet ?",
+      "choices": [
+        "Toutes ces photos sont pour le DAS de Ludi Planet",
+        "Aucune photo n'est du DAS de Ludi Planet, c'est ENVOL L'Agence qui commercialise",
+        "il y a du casino, c'est donc le DAS Envol Animation",
+        "Oh !, une crêpe au Nutella c'est trop bon !!!"
+      ],
+      "correctAnswer": "Toutes ces photos sont pour le DAS de Ludi Planet",
+      "timer": 30,
+      "points": 1,
+      "speedBonus": true,
+      "explanation": "En cas de privatisation de la salle, Ludi Planet reste prioritaire",
+      "image": "/uploads/images/step_1793224758752.jpg?v=1793224865432"
+    },
+    {
+      "id": "step_1793224964197",
+      "gameMode": "classic_qcm",
+      "question": "Le client, une agence événementielle a demandé une installation complète du matériel et une reprise le lendemain, un ensemble pour 200 invités, avec 6 stands, 12 jeux en bois, la mailloche et 2 terrains de pétanque.",
+      "choices": ["Location Fête, mais avec livraison", "ENVOL, l'Agence", "ENVOL Animation "],
+      "correctAnswer": "ENVOL Animation ",
+      "timer": 30,
+      "points": 1,
+      "speedBonus": true,
+      "explanation": "ENVOL Animation, car pas de personnalisation, une location simple sans valeur ajoutée",
+      "image": "/uploads/images/step_1793224964197.JPEG?v=1793225116917"
+    },
+    {
+      "id": "step_1793225152028",
+      "gameMode": "oeil_de_lynx",
+      "question": "Quel énoncé est vrai ?",
+      "choices": [
+        "Dans le DAS ENVOL Animation, il est possible de proposer des prestations sans matériel, uniquement l'animation avec animateur.",
+        "La prestation petit train avec une déco safari, c'est le DAS ENVOL Animation",
+        "La prestation team building, avec ou sans goodies, c'est le DAS ENVOL l'Agence",
+        "Je peux louer le décor western complet (la grande façade) sur Location Fête"
+      ],
+      "correctAnswer": "La prestation team building, avec ou sans goodies, c'est le DAS ENVOL l'Agence",
+      "timer": 30,
+      "points": 1,
+      "speedBonus": true,
+      "explanation": "La prestation team building c'est l'ENVOL l'Agence, car c'est la valeur moyen humain "
+    },
+    {
+      "id": "step_1793225349287",
+      "gameMode": "classic_qcm",
+      "question": "Quelle affirmation est fausse ?",
+      "choices": [
+        "Le DAS ENVOL l'Agence, les animateurs sont costumés en tenue thématisé",
+        "La personnalisation du photo Booth c'est le DAS ENVOL L'Agence systématiquement",
+        "Scéno Déco fabrique des décors sur mesure",
+        "ENVOL Animation ne propose pas de prestations artistiques"
+      ],
+      "correctAnswer": "La personnalisation du photo Booth c'est le DAS ENVOL L'Agence systématiquement",
+      "timer": 30,
+      "points": 1,
+      "speedBonus": true,
+      "explanation": "La personnalistion du photobooth c'est location fête ou ENVOL Animation",
+      "image": "/uploads/images/step_1793225349287.JPEG?v=1793225538877"
+    }
+  ]
+}
