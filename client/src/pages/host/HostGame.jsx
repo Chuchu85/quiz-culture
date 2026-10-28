@@ -170,7 +170,7 @@ export default function HostGame() {
 
   return (
     <div style={pageStyle}>
-      <div className="flex flex-col min-h-screen px-4 py-4 gap-3">
+      <div className="flex flex-col h-screen overflow-hidden px-4 py-4 gap-3">
 
         {/* ── Top bar ── */}
         <HCard style={{ padding: '10px 20px' }}>

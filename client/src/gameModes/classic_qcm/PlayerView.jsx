@@ -78,7 +78,7 @@ export default function ClassicQCMPlayerView({ step, state, socket, myAnswer, ha
             return (
               <div key={c.id} className="rounded-2xl overflow-hidden"
                 style={{ boxShadow: isCorrect ? '0 0 20px rgba(57,255,20,0.5)' : isMine && !isCorrect ? '0 0 12px rgba(255,80,80,0.4)' : 'none' }}>
-                <img src={c.imageUrl} alt="" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'contain', background: 'rgba(0,0,0,0.2)' }} />
+                <img src={c.imageUrl} alt="" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover' }} />
                 <div className="px-2 py-1.5 flex items-center gap-1"
                   style={{ background: isCorrect ? 'rgba(57,255,20,0.2)' : isMine && !isCorrect ? 'rgba(255,50,50,0.2)' : 'rgba(255,255,255,0.06)' }}>
                   <span className="font-display text-sm" style={{ color: isCorrect ? '#39ff14' : isMine && !isCorrect ? '#ff8080' : COLORS[i] }}>
@@ -160,7 +160,7 @@ export default function ClassicQCMPlayerView({ step, state, socket, myAnswer, ha
                       outline: isSelected ? `2px solid ${COLORS[i]}` : 'none',
                       outlineOffset: 2,
                     }}>
-                    <img src={c.imageUrl} alt="" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'contain', background: 'rgba(0,0,0,0.2)' }} />
+                    <img src={c.imageUrl} alt="" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover' }} />
                     <div className="px-2 py-1.5 flex items-center gap-1"
                       style={{ background: isSelected ? `${COLORS[i]}30` : 'rgba(255,255,255,0.07)' }}>
                       <span className="font-display text-sm" style={{ color: COLORS[i] }}>{String.fromCharCode(65 + i)})</span>

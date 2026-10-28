@@ -72,7 +72,7 @@ export default function ClassicQCMHostView({ step, state }) {
             return (
               <div key={c.id} className="rounded-xl overflow-hidden"
                 style={{ border: `1.5px solid ${col.border}` }}>
-                <img src={c.imageUrl} alt="" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'contain', background: 'rgba(0,0,0,0.2)' }} />
+                <img src={c.imageUrl} alt="" style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover' }} />
                 <div className="px-2 py-1 flex items-center gap-1" style={{ background: col.bg }}>
                   <span className="font-display text-xs" style={{ color: col.text }}>{String.fromCharCode(65 + i)})</span>
                   {c.text && <span className="font-body text-xs text-slate-700 flex-1">{c.text}</span>}
