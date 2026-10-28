@@ -50,7 +50,7 @@ export default function ClassicQCMDisplayView({ step, state }) {
           gridTemplateRows: choices.length > 2 ? '1fr 1fr' : '1fr',
           gap: 8,
           /* Limite la hauteur pour garder des cellules proches du carré sur écran 16:9 */
-          maxHeight: '62vh',
+          maxHeight: '78vh',
           alignSelf: 'center',
         }}>
           {choices.map((c, i) => {
