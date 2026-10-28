@@ -8,10 +8,10 @@
       "gameMode": "classic_qcm",
       "question": "Laquelle de ces photos n'est pas du matériel disponible chez location fête ?",
       "choices": [
-        { "id": "Photo A", "text": "Photo A", "imageUrl": "/uploads/images/step_1793223805960.JPEG" },
-        { "id": "Photo B", "text": "Photo B", "imageUrl": "/uploads/images/step_1793223805960.JPEG" },
-        { "id": "Photo C", "text": "Photo C", "imageUrl": "/uploads/images/step_1793223805960.jpg" },
-        { "id": "Photo D", "text": "Photo D", "imageUrl": "/uploads/images/step_1793223805960.jpg" }
+        { "id": "Photo A", "text": "Photo A", "imageUrl": "/uploads/images/step_1793223805960_choice0.JPEG" },
+        { "id": "Photo B", "text": "Photo B", "imageUrl": "/uploads/images/step_1793223805960_choice1.JPEG" },
+        { "id": "Photo C", "text": "Photo C", "imageUrl": "/uploads/images/step_1793223805960_choice2.jpg" },
+        { "id": "Photo D", "text": "Photo D", "imageUrl": "/uploads/images/step_1793223805960_choice3.jpg" }
       ],
       "correctAnswer": "Photo D",
       "timer": 30,
