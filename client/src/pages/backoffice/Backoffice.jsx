@@ -1169,7 +1169,7 @@ function ThemeEditor({ theme, onSave, onActivate, onDelete, isActive, loading, s
       const res = await fetch(`/api/backoffice/themes/${t.id}/background`, { method: 'POST', body: fd })
       const data = await res.json()
       if (data.backgroundImage) {
-        setT(prev => ({ ...prev, backgroundImage: data.backgroundImage }))
+        setT(prev => ({ ...prev, backgroundImage: `${data.backgroundImage}?v=${Date.now()}` }))
         showToast('Image de fond uploadée ✓')
       }
     } catch { showToast('Erreur upload', 'error') }
@@ -1592,7 +1592,8 @@ export default function Backoffice() {
       const res = await fetch(endpoint, { method: 'POST', body: fd })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error)
-      const url = data.audio || data.image || data.videoUrl || data.imageUrl
+      const rawUrl = data.audio || data.image || data.videoUrl || data.imageUrl
+      const url = rawUrl ? `${rawUrl}?v=${Date.now()}` : rawUrl
       onSuccess(url)
       showToast('Fichier uploadé ✓')
     } catch (e) { showToast(e.message || 'Erreur upload', 'error') }
@@ -1638,9 +1639,10 @@ export default function Backoffice() {
       const data = await res.json()
       if (!res.ok) throw new Error(data.error)
       const fieldMap = { logo: 'logoUrl', clientLogo: 'clientLogoUrl', background: 'backgroundUrl' }
+      const url = data.url ? `${data.url}?v=${Date.now()}` : data.url
       setEditingQuiz(prev => ({
         ...prev,
-        visual: { ...(prev.visual || {}), [fieldMap[type]]: data.url } }))
+        visual: { ...(prev.visual || {}), [fieldMap[type]]: url } }))
       showToast('Image uploadée ✓')
     } catch (e) { showToast(e.message || 'Erreur upload', 'error') }
     finally { setLoading(false) }
